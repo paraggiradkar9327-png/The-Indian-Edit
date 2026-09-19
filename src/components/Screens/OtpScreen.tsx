@@ -1,12 +1,18 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { useGame } from '../../context/GameContext';
-import { ShieldCheck, ArrowRight, RotateCcw, CheckCircle2, KeyRound } from 'lucide-react';
-import { sound } from '../../utils/audio';
+import React, { useState, useEffect, useRef } from "react";
+import { useGame } from "../../context/GameContext";
+import {
+  ShieldCheck,
+  ArrowRight,
+  RotateCcw,
+  CheckCircle2,
+  KeyRound,
+} from "lucide-react";
+import { sound } from "../../utils/audio";
 
 export const OtpScreen: React.FC = () => {
   const { state, setOtpVerified, navigateTo } = useGame();
-  const [digits, setDigits] = useState<string[]>(['', '', '', '', '', '']);
-  const [error, setError] = useState('');
+  const [digits, setDigits] = useState<string[]>(["", "", "", "", "", ""]);
+  const [error, setError] = useState("");
   const [timeLeft, setTimeLeft] = useState(45);
   const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
 
@@ -15,7 +21,7 @@ export const OtpScreen: React.FC = () => {
     inputRefs.current[0]?.focus();
 
     const timer = setInterval(() => {
-      setTimeLeft(prev => (prev > 0 ? prev - 1 : 0));
+      setTimeLeft((prev) => (prev > 0 ? prev - 1 : 0));
     }, 1000);
 
     return () => clearInterval(timer);
@@ -28,56 +34,62 @@ export const OtpScreen: React.FC = () => {
     const newDigits = [...digits];
     newDigits[index] = char;
     setDigits(newDigits);
-    setError('');
+    setError("");
 
     if (char && index < 5) {
       inputRefs.current[index + 1]?.focus();
     }
   };
 
-  const handleKeyDown = (index: number, e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'Backspace' && !digits[index] && index > 0) {
+  const handleKeyDown = (
+    index: number,
+    e: React.KeyboardEvent<HTMLInputElement>,
+  ) => {
+    if (e.key === "Backspace" && !digits[index] && index > 0) {
       inputRefs.current[index - 1]?.focus();
     }
   };
 
   const handleVerify = (e?: React.FormEvent) => {
     if (e) e.preventDefault();
-    const code = digits.join('');
-    
+    const code = digits.join("");
+
     // Accept 123456 or any 6-digit code for interactive demo flow
     if (code.length < 6) {
-      setError('Please enter the complete 6-digit code.');
+      setError("Please enter the complete 6-digit code.");
       sound.playWrong();
       return;
     }
 
     sound.playSuccess();
     setOtpVerified(true);
-    navigateTo('screen-welcome');
+    navigateTo("screen-welcome");
   };
 
   const autofillDemoCode = () => {
-    setDigits(['1', '2', '3', '4', '5', '6']);
-    setError('');
+    setDigits(["1", "2", "3", "4", "5", "6"]);
+    setError("");
     sound.playClick();
   };
 
   return (
     <div className="max-w-md mx-auto py-12 px-4 sm:px-6 animate-fade-in">
       <div className="gold-card p-6 sm:p-8 text-center">
-        
         {/* Crest Emblem */}
         <div className="w-14 h-14 mx-auto mb-4 rounded-full border border-[#d4af37]/60 bg-[#2e1e15] flex items-center justify-center p-3 shadow-[0_0_20px_rgba(212,175,55,0.25)]">
           <KeyRound className="w-7 h-7 text-[#d4af37]" />
         </div>
 
-        <span className="text-xs font-bold tracking-widest text-[#d4af37] uppercase">Two-Factor Authentication</span>
-        <h2 className="font-serif text-2xl font-bold text-[#faf6f0] mt-1">Enter Verification Code</h2>
+        <span className="text-xs font-bold tracking-widest text-[#d4af37] uppercase">
+          Two-Factor Authentication
+        </span>
+        <h2 className="font-serif text-2xl font-bold text-[#faf6f0] mt-1">
+          Enter Verification Code
+        </h2>
         <p className="text-xs text-[#a69383] mt-2">
           We sent a 6-digit royal pass to <br />
           <span className="font-mono text-[#f5d77f] font-semibold">
-            +91 {state.userPhone || '98765 43210'}
+            +91 {state.userPhone || "98765 43210"}
           </span>
         </p>
 
@@ -112,7 +124,6 @@ export const OtpScreen: React.FC = () => {
             className="w-full py-3.5 btn-gold text-sm font-bold flex items-center justify-center gap-2 group cursor-pointer"
           >
             <span>Confirm & Enter Experience</span>
-            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </button>
         </form>
 
@@ -131,7 +142,10 @@ export const OtpScreen: React.FC = () => {
         {/* Resend Timer */}
         <div className="mt-6 pt-4 border-t border-[#3d261a] text-xs text-[#a69383]">
           {timeLeft > 0 ? (
-            <span>Resend code in <strong className="text-[#faf6f0]">{timeLeft}s</strong></span>
+            <span>
+              Resend code in{" "}
+              <strong className="text-[#faf6f0]">{timeLeft}s</strong>
+            </span>
           ) : (
             <button
               onClick={() => {
@@ -145,7 +159,6 @@ export const OtpScreen: React.FC = () => {
             </button>
           )}
         </div>
-
       </div>
     </div>
   );

@@ -66,11 +66,7 @@ const MainExperience: React.FC = () => {
       )}
 
       <div>
-        <Header
-          onOpenLeaderboard={() => setIsLeaderboardOpen(true)}
-          onOpenSettings={() => setIsSettingsOpen(true)}
-          onShowIntroSplash={() => setShowIntroSplash(true)}
-        />
+        <Header onShowIntroSplash={() => setShowIntroSplash(true)} />
         <main className="w-full">{renderActiveScreen()}</main>
       </div>
 

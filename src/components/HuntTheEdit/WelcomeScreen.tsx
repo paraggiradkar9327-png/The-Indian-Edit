@@ -65,7 +65,6 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
           <span className="relative z-10 text-[#fff3c4] group-hover:text-[#ffffff]">
             START THE HUNT
           </span>
-          <ArrowRight className="relative z-10 w-4 h-4 text-[#d4af37] group-hover:text-[#fff3c4] transition-colors" />
         </button>
       </div>
 

@@ -40,7 +40,7 @@ export const HUNT_ROUNDS: HuntRound[] = [
         width: 4.8,
         height: 12.5,
         rotation: 0,
-        opacity: 0.82,
+        opacity: 0.9,
         hint: "Resting on the upper carved bar shelf near the crystal decanters",
       },
       {
@@ -51,7 +51,7 @@ export const HUNT_ROUNDS: HuntRound[] = [
         width: 5.0,
         height: 13.0,
         rotation: 1,
-        opacity: 0.8,
+        opacity: 0.9,
         hint: "Framed inside the right carved teakwood ornamental arch",
       },
       {
@@ -62,7 +62,7 @@ export const HUNT_ROUNDS: HuntRound[] = [
         width: 5.6,
         height: 14.2,
         rotation: 0,
-        opacity: 0.85,
+        opacity: 0.9,
         hint: "Beside the sculpted brass elephant centerpiece on the marble counter",
       },
       {
@@ -73,7 +73,7 @@ export const HUNT_ROUNDS: HuntRound[] = [
         width: 5.4,
         height: 13.8,
         rotation: -2,
-        opacity: 0.76,
+        opacity: 0.9,
         hint: "Tucked within the velvet crimson drapery folds on the left",
       },
       {
@@ -84,7 +84,7 @@ export const HUNT_ROUNDS: HuntRound[] = [
         width: 5.4,
         height: 13.8,
         rotation: 2,
-        opacity: 0.84,
+        opacity: 0.9,
         hint: "Positioned on the lower right cocktail bar console",
       },
     ],
@@ -106,7 +106,7 @@ export const HUNT_ROUNDS: HuntRound[] = [
         width: 4.2,
         height: 11.2,
         rotation: -1,
-        opacity: 0.78,
+        opacity: 0.9,
         hint: "Blended into the white marble lattice shadow on the left wall",
       },
       {
@@ -117,7 +117,7 @@ export const HUNT_ROUNDS: HuntRound[] = [
         width: 4.5,
         height: 11.8,
         rotation: 0,
-        opacity: 0.82,
+        opacity: 0.9,
         hint: "Standing on the gilded console beneath the floral mural",
       },
       {
@@ -128,7 +128,7 @@ export const HUNT_ROUNDS: HuntRound[] = [
         width: 4.0,
         height: 10.5,
         rotation: 2,
-        opacity: 0.74,
+        opacity: 0.9,
         hint: "Integrated beside the warm glowing brass lantern on the right",
       },
       {
@@ -139,7 +139,7 @@ export const HUNT_ROUNDS: HuntRound[] = [
         width: 4.8,
         height: 12.2,
         rotation: 0,
-        opacity: 0.8,
+        opacity: 0.9,
         hint: "Behind the engraved brass elephant ornament on the marble terrace",
       },
       {
@@ -150,7 +150,7 @@ export const HUNT_ROUNDS: HuntRound[] = [
         width: 4.1,
         height: 10.8,
         rotation: -1,
-        opacity: 0.75,
+        opacity: 0.9,
         hint: "Shadowed beneath the royal archway colonnade on the far right",
       },
     ],
@@ -194,7 +194,7 @@ export const HUNT_ROUNDS: HuntRound[] = [
         width: 3.8,
         height: 9.8,
         rotation: 0,
-        opacity: 0.78,
+        opacity: 0.9,
         hint: "Nestled between the antique crystal decanters on the middle tier",
       },
       {
@@ -205,7 +205,7 @@ export const HUNT_ROUNDS: HuntRound[] = [
         width: 3.3,
         height: 8.6,
         rotation: -2,
-        opacity: 3,
+        opacity: 0.9,
         hint: "Camouflaged against the dark embroidered royal tapestry on the left",
       },
       {
@@ -216,7 +216,7 @@ export const HUNT_ROUNDS: HuntRound[] = [
         width: 3.6,
         height: 9.4,
         rotation: 2,
-        opacity: 1,
+        opacity: 0.9,
         hint: "Resting on the lower timber wine shelf beside the brass chalice",
       },
     ],

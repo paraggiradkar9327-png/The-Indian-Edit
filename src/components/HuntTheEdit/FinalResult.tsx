@@ -101,7 +101,7 @@ export const FinalResult: React.FC<FinalResultProps> = ({
       </div>
 
       {/* CTAs */}
-      <div className="relative z-10 flex flex-col sm:flex-row items-center gap-3.5 w-full max-w-md mx-auto">
+      <div className="relative z-10 flex flex-col sm:flex-row items-center gap-3.5 w-full max-w-md mx-auto mt-4">
         {onContinueToGrandFinale && (
           <button
             type="button"
@@ -110,7 +110,7 @@ export const FinalResult: React.FC<FinalResultProps> = ({
               sound.playClick();
               onContinueToGrandFinale();
             }}
-            className="w-full py-3.5 px-6 rounded-xl bg-[#170c07] border border-[#d4af37]/60 text-[#faf5eb] hover:text-[#fff3c4] hover:border-[#d4af37] text-xs sm:text-sm font-bold tracking-[0.16em] uppercase cursor-pointer transition-all flex items-center justify-center gap-2"
+            className="w-full sm:w-auto px-6 py-3 rounded-full bg-linear-to-r from-[#fce588] via-[#d4af37] to-[#b68b20] text-[#1a0f07] text-xs sm:text-sm font-bold flex items-center justify-center gap-2 group cursor-pointer shadow-lg active:scale-95 transition-transform"
           >
             <span>CLAIM REWARD & CERTIFICATE</span>
           </button>
@@ -122,7 +122,7 @@ export const FinalResult: React.FC<FinalResultProps> = ({
             sound.playClick();
             onRestart();
           }}
-          className="w-full py-3.5 px-6 rounded-xl bg-[#170c07] border border-[#d4af37]/60 text-[#faf5eb] hover:text-[#fff3c4] hover:border-[#d4af37] text-xs sm:text-sm font-bold tracking-[0.16em] uppercase cursor-pointer transition-all flex items-center justify-center gap-2"
+          className="w-full sm:w-auto px-6 py-3 rounded-full bg-linear-to-r from-[#fce588] via-[#d4af37] to-[#b68b20] text-[#1a0f07] text-xs sm:text-sm font-bold flex items-center justify-center gap-2 group cursor-pointer shadow-lg active:scale-95 transition-transform"
         >
           <RotateCcw className="w-3.5 h-3.5" />
           <span>PLAY AGAIN</span>

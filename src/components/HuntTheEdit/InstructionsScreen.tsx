@@ -89,7 +89,6 @@ export const InstructionsScreen: React.FC<InstructionsScreenProps> = ({
           className="px-10 py-4 rounded-xl bg-linear-to-b from-[#1c0e07] to-[#0a0402] border border-[#d4af37] text-sm sm:text-base font-bold tracking-[0.2em] text-[#faf5eb] uppercase cursor-pointer shadow-[0_10px_35px_rgba(212,175,55,0.35)] hover:shadow-[0_15px_45px_rgba(212,175,55,0.55)] hover:border-[#fff3c4] transform hover:-translate-y-1 active:translate-y-0 transition-all duration-300 inline-flex items-center justify-center gap-3"
         >
           <span className="text-[#fff3c4]">START ROUND 1</span>
-          <ArrowRight className="w-4 h-4 text-[#d4af37]" />
         </button>
       </div>
     </div>

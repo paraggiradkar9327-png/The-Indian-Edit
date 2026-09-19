@@ -204,7 +204,6 @@ export const LoginScreen: React.FC = () => {
                 className="w-full py-3.5 px-6 btn-gold text-sm font-bold flex items-center justify-center gap-2 group cursor-pointer"
               >
                 <span>Verify & Unlock The Experience</span>
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </button>
             </div>
           </form>

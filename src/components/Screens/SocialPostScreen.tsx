@@ -91,7 +91,6 @@ export const SocialPostScreen: React.FC = () => {
               className="w-full py-3 btn-gold text-xs font-bold flex items-center justify-center gap-2 group cursor-pointer"
             >
               <span>Verify Share & Unlock Scratch Reward</span>
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </button>
           </div>
         </div>

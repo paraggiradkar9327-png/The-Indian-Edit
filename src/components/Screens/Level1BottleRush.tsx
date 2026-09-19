@@ -1,13 +1,5 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
-import {
-  ArrowRight,
-  RotateCcw,
-  Timer,
-  Flame,
-  Pause,
-  Play,
-  Trophy,
-} from "lucide-react";
+import { RotateCcw, Timer, Flame, Pause, Play, Trophy } from "lucide-react";
 import { useGame } from "../../context/GameContext";
 
 // ==========================================
@@ -256,12 +248,6 @@ export const Level1BottleRush: React.FC<Level1BottleRushProps> = ({
 
   const nextId = useRef(1);
 
-  const toggleMute = () => {
-    soundEffect.enabled = !soundEffect.enabled;
-    setSoundOn(soundEffect.enabled);
-    setAnnouncement(soundEffect.enabled ? "Sound unmuted" : "Sound muted");
-  };
-
   // Keyboard controls
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
@@ -326,7 +312,7 @@ export const Level1BottleRush: React.FC<Level1BottleRushProps> = ({
         type,
         x: Math.floor(Math.random() * 76) + 12,
         y: -12,
-        speed: Math.random() * 0.45 + 0.65,
+        speed: Math.random() * 0.3 + 0.4,
         points: pts,
         size: type === "tie_bottle" ? 64 : 52,
         collected: false,
@@ -369,7 +355,7 @@ export const Level1BottleRush: React.FC<Level1BottleRushProps> = ({
     setBottlesCount(0);
     setCombo(0);
     setMaxCombo(0);
-    setTimeLeft(10.0);
+    setTimeLeft(15.0);
     setGameOver(false);
     setIsPaused(false);
     setItems([]);
@@ -496,7 +482,7 @@ export const Level1BottleRush: React.FC<Level1BottleRushProps> = ({
       {/* Combo Streak Indicator */}
       {gameActive && combo > 1 && (
         <div
-          className="flex items-center justify-between px-3 py-1.5 mb-2 rounded-lg bg-[#25160d]/90 border border-[#d4af37]/40 text-xs text-[#fce588] animate-pulse"
+          className="flex items-center justify-between px-3 py-1.5 mb-2 rounded-lg text-xs text-[#fce588] animate-pulse"
           role="status"
         >
           <div className="flex items-center gap-1.5 font-bold">
@@ -510,10 +496,10 @@ export const Level1BottleRush: React.FC<Level1BottleRushProps> = ({
       )}
 
       {/* Primary Interactive Game Arena */}
-      <div className="relative w-full h-[58vh] min-h-95 max-h-145 sm:h-125 md:h-135 rounded-2xl border-2 border-[#d4af37]/50 overflow-hidden shadow-[0_12px_40px_rgba(0,0,0,0.7)] select-none touch-none bg-linear-to-b from-[#190f09] via-[#140b06] to-[#0d0704] backdrop-blur-lg">
+      <div className="relative w-full h-[58vh] min-h-95 max-h-145 sm:h-125 md:h-135 rounded-2xl overflow-hidden">
         {/* Subtle Background Pattern */}
         <div
-          className="absolute inset-0 opacity-15 bg-[radial-gradient(#d4af37_1.2px,transparent_1.2px)] bg-size-[20px_20px] pointer-events-none"
+          className="absolute inset-0 opacity-15  bg-size-[20px_20px] pointer-events-none"
           aria-hidden="true"
         />
 
@@ -522,24 +508,6 @@ export const Level1BottleRush: React.FC<Level1BottleRushProps> = ({
           className="absolute -top-24 left-1/2 -translate-x-1/2 w-3/4 h-36 bg-[#d4af37]/15 rounded-full blur-3xl pointer-events-none"
           aria-hidden="true"
         />
-
-        {/* Progress Bar at Top */}
-        <div
-          className="absolute top-0 left-0 right-0 h-1.5 bg-[#25160c] z-10"
-          role="progressbar"
-          aria-valuenow={Math.round((timeLeft / 10.0) * 100)}
-          aria-valuemin={0}
-          aria-valuemax={100}
-        >
-          <div
-            className={`h-full transition-all duration-100 ease-linear ${
-              isLowTime
-                ? "bg-linear-to-r from-red-600 via-red-500 to-amber-500"
-                : "bg-linear-to-r from-[#d4af37] via-[#fce588] to-[#ff9933]"
-            }`}
-            style={{ width: `${(timeLeft / 10.0) * 100}%` }}
-          />
-        </div>
 
         {/* Paused Overlay */}
         {isPaused && (
@@ -563,14 +531,14 @@ export const Level1BottleRush: React.FC<Level1BottleRushProps> = ({
         {/* Start Overlay: High Contrast Glass Dialog */}
         {/* Start Overlay: High Contrast Glass Dialog */}
         {!gameActive && !gameOver && (
-          <div className="absolute inset-0 z-20 flex flex-col items-center justify-center text-center p-4 sm:p-6 bg-[#100a06]/85 backdrop-blur-sm">
+          <div className="absolute inset-0 z-20 flex flex-col items-center justify-center text-center p-4 sm:p-6 ">
             {/* Monogram Seal */}
 
-            <h2 className="font-serif text-xl sm:text-2xl md:text-3xl font-bold gold-gradient-text tracking-wide mb-4">
+            <h2 className="font-serif text-[clamp(2rem,5.5vw,3.4rem)] font-bold gold-gradient-text tracking-wide mb-4">
               Catch The Indian Edit Bottles!
             </h2>
 
-            <p className="text-xs sm:text-sm text-[#d5c3b2] mt-2 sm:mt-3 leading-relaxed max-w-md mx-auto mb-3">
+            <p className="text-xs sm:text-sm  text-[#f2ead9] mt-2 sm:mt-3 leading-relaxed max-w-md mx-auto mb-3">
               Tap or click falling luxury bottles (
               <span className="text-[#fce588] font-bold">+100</span>) and
               heritage tokens (
@@ -641,7 +609,6 @@ export const Level1BottleRush: React.FC<Level1BottleRushProps> = ({
                 <span className="font-serif tracking-wider uppercase">
                   Start 10s Rush
                 </span>
-                <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1.5 transition-transform" />
               </button>
             </div>
           </div>
@@ -701,7 +668,7 @@ export const Level1BottleRush: React.FC<Level1BottleRushProps> = ({
         {/* Game Over / Results Modal */}
         {gameOver && (
           <div
-            className="absolute inset-0 z-30 flex flex-col items-center justify-center text-center p-4 sm:p-6 bg-[#100a06]/90 backdrop-blur-md"
+            className="absolute inset-0 z-30 flex flex-col items-center justify-center text-center p-4 sm:p-6"
             role="dialog"
             aria-modal="true"
           >
@@ -709,11 +676,11 @@ export const Level1BottleRush: React.FC<Level1BottleRushProps> = ({
               Challenge Complete
             </span>
 
-            <h2 className="font-serif text-2xl sm:text-3xl font-bold gold-gradient-text  m-3 ">
+            <h2 className="font-serif text-[clamp(2rem,5.5vw,3.4rem)] font-bold gold-gradient-text  m-3 ">
               Harvest Rush Cleared!
             </h2>
 
-            <p className="text-xs sm:text-sm text-[#d5c3b2] mt-1">
+            <p className="text-xs sm:text-sm text-[#f2ead9] mt-1">
               You successfully protected the harvest line.
             </p>
 
@@ -741,10 +708,10 @@ export const Level1BottleRush: React.FC<Level1BottleRushProps> = ({
             </div>
 
             {/* Action Buttons */}
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-2.5 sm:gap-3">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-2.5 sm:gap-3 mt-4">
               <button
                 onClick={startGame}
-                className="w-full sm:w-auto px-5 py-3 rounded-full border border-[#d4af37]/50 text-xs sm:text-sm font-semibold text-[#fce588] hover:bg-[#2e1e15] hover:text-white transition-colors flex items-center justify-center gap-2 cursor-pointer"
+                className="w-full sm:w-auto px-6 py-3 rounded-full bg-linear-to-r from-[#fce588] via-[#d4af37] to-[#b68b20] text-[#1a0f07] text-xs sm:text-sm font-bold flex items-center justify-center gap-2 group cursor-pointer shadow-lg active:scale-95 transition-transform"
                 aria-label="Try challenge again"
               >
                 <RotateCcw className="w-4 h-4" />
@@ -760,7 +727,6 @@ export const Level1BottleRush: React.FC<Level1BottleRushProps> = ({
                 className="w-full sm:w-auto px-6 py-3 rounded-full bg-linear-to-r from-[#fce588] via-[#d4af37] to-[#b68b20] text-[#1a0f07] text-xs sm:text-sm font-bold flex items-center justify-center gap-2 group cursor-pointer shadow-lg active:scale-95 transition-transform"
               >
                 <span>Proceed to Level 02</span>
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </button>
             </div>
           </div>

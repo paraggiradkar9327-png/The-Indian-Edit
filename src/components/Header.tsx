@@ -12,16 +12,10 @@ import {
 } from "lucide-react";
 
 interface HeaderProps {
-  onOpenLeaderboard: () => void;
-  onOpenSettings: () => void;
   onShowIntroSplash?: () => void;
 }
 
-export const Header: React.FC<HeaderProps> = ({
-  onOpenLeaderboard,
-  onOpenSettings,
-  onShowIntroSplash,
-}) => {
+export const Header: React.FC<HeaderProps> = ({ onShowIntroSplash }) => {
   const { state, navigateTo, toggleSound, resetGame, loadDemoState } =
     useGame();
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -85,13 +79,8 @@ export const Header: React.FC<HeaderProps> = ({
           className="flex items-center gap-3 text-left group focus:outline-none cursor-pointer"
           title="Return to Experience Home"
         >
-          <div className="w-11 h-11 rounded-full border border-[#d4af37]/70 bg-[#1a0c06] flex items-center justify-center p-2 shadow-[0_0_18px_rgba(212,175,55,0.25)] group-hover:border-[#d4af37] group-hover:scale-105 transition-all">
-            <svg viewBox="0 0 24 24" className="w-full h-full fill-[#d4af37]">
-              <path d="M19 13c.6 0 1-.4 1-1V8.5C20 5.5 17.5 3 14.5 3c-1.8 0-3.4 1-4.2 2.5C9.5 5.2 8.7 5 8 5 5.8 5 4 6.8 4 9v6h2v-3.5c0-.8.7-1.5 1.5-1.5h1.5v5h2v-5h2.5c.8 0 1.5.7 1.5 1.5V17h2v-4h2z" />
-            </svg>
-          </div>
           <div>
-            <span className="block font-serif text-lg sm:text-xl font-bold tracking-[0.18em] text-[#faf5eb] group-hover:text-[#f7e7a9] transition-colors">
+            <span className="block font-serif text-lg sm:text-xl font-bold tracking-[0.18em] gold-gradient-text group-hover:text-[#f7e7a9] transition-colors">
               THE INDIAN EDIT
             </span>
             <span className="block text-[10px] sm:text-xs tracking-[0.25em] text-[#d4af37] font-medium uppercase">
@@ -100,12 +89,8 @@ export const Header: React.FC<HeaderProps> = ({
           </div>
         </button>
 
-        {/* Center Live Telemetry */}
-        <div className="hidden md:flex items-center gap-4">
-          <div className="px-3.5 py-1.5 rounded-full bg-[#1a0c06] border border-[#d4af37]/40 text-xs font-semibold tracking-wider text-[#f7e7a9] shadow-inner">
-            {getLevelBadgeText(state.currentScreen)}
-          </div>
-
+        {/* Right Controls */}
+        <div className="flex items-center gap-2 sm:gap-3">
           <div className="flex items-center bg-[#130a05] border border-[#d4af37]/30 rounded-lg px-3 py-1.5 gap-2">
             <span className="text-[10px] tracking-wider text-[#ab9580] uppercase font-bold">
               SCORE
@@ -120,10 +105,6 @@ export const Header: React.FC<HeaderProps> = ({
               ).toLocaleString()}
             </span>
           </div>
-        </div>
-
-        {/* Right Controls */}
-        <div className="flex items-center gap-2 sm:gap-3">
           {/* Experience Jumper Menu */}
           <div className="relative">
             <button
@@ -182,28 +163,6 @@ export const Header: React.FC<HeaderProps> = ({
             )}
           </div>
 
-          {/* Intro Showcase Replay Button */}
-          {onShowIntroSplash && (
-            <button
-              onClick={onShowIntroSplash}
-              className="p-2 sm:px-3 sm:py-1.5 rounded-full border border-[#d4af37]/45 bg-[#1a0c06] text-[#f7e7a9] hover:bg-[#2e160f] hover:border-[#d4af37] transition-all flex items-center gap-1.5 text-xs shadow-sm cursor-pointer"
-              title="View The Indian Edit Luxury Bottle Showcase"
-            >
-              <Sparkles className="w-3.5 h-3.5 text-[#d4af37]" />
-              <span className="hidden sm:inline font-medium">Showcase</span>
-            </button>
-          )}
-
-          {/* Leaderboard Button */}
-          <button
-            onClick={onOpenLeaderboard}
-            className="p-2 sm:px-3 sm:py-1.5 rounded-full border border-[#d4af37]/35 bg-[#130a05] text-[#f7e7a9] hover:bg-[#1f1008] hover:border-[#d4af37] transition-all flex items-center gap-1.5 text-xs cursor-pointer"
-            title="Hall of Fame & Leaderboard"
-          >
-            <Trophy className="w-4 h-4 text-[#d4af37]" />
-            <span className="hidden lg:inline font-medium">Rankings</span>
-          </button>
-
           {/* Audio Toggle */}
           <button
             onClick={toggleSound}
@@ -228,15 +187,6 @@ export const Header: React.FC<HeaderProps> = ({
               <span>Login</span>
             </button>
           )}
-
-          {/* Settings / Demo Mode */}
-          <button
-            onClick={onOpenSettings}
-            className="p-2 rounded-full border border-[#d4af37]/35 bg-[#130a05] text-[#f7e7a9] hover:bg-[#1f1008] hover:border-[#d4af37] transition-all cursor-pointer"
-            title="Experience Controls & State Inspector"
-          >
-            <Sparkles className="w-4 h-4 text-[#e58325]" />
-          </button>
         </div>
       </div>
     </header>

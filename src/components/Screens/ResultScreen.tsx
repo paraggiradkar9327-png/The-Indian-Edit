@@ -145,7 +145,6 @@ export const ResultScreen: React.FC = () => {
           >
             <Share2 className="w-4 h-4" />
             <span>Generate 1080p Social Post</span>
-            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </button>
 
           <button

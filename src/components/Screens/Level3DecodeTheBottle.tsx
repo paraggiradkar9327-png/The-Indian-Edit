@@ -210,12 +210,7 @@ export const Level3DecodeTheBottle: React.FC = () => {
       {/* Level Header */}
       <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-6">
         <div>
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#2e1e15] border border-[#d4af37]/40 text-xs text-[#f5d77f]">
-            <span>LEVEL 03 / 05</span>
-            <span>•</span>
-            <span className="text-[#a69383]">BOTTLE CRAFTSMANSHIP</span>
-          </div>
-          <h2 className="font-serif text-2xl sm:text-3xl font-bold text-[#faf6f0] mt-1">
+          <h2 className="font-serif text-[clamp(2rem,5.5vw,3.4rem)] sm:text-3xl font-bold gold-gradient-text mt-1">
             Decode The Bottle
           </h2>
           <p className="text-xs text-[#faf6f0] mt-1">
@@ -341,7 +336,6 @@ export const Level3DecodeTheBottle: React.FC = () => {
         <div className="lg:col-span-4 space-y-4">
           <div className="gold-card p-5">
             <h3 className="font-serif text-lg font-bold text-[#faf6f0] flex items-center gap-2">
-              <Sparkles className="w-5 h-5 text-[#d4af37]" />
               <span>Craft Hotspot Index</span>
             </h3>
             <p className="text-xs text-[#a69383] mt-1">
@@ -403,7 +397,7 @@ export const Level3DecodeTheBottle: React.FC = () => {
                   }}
                   className="w-full p-2 btn-gold text-xs font-bold flex items-center justify-center gap-2 group cursor-pointer"
                 >
-                  <span>Proceed to Level 04: Master Blend</span>
+                  <span>Proceed to Level 04: Blend the Edit</span>
                 </button>
               </div>
             )}

@@ -86,15 +86,10 @@ export const Level2ZeroMileMap: React.FC = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-6">
         <div>
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#2e1e15] border border-[#d4af37]/40 text-xs text-[#f5d77f]">
-            <span>LEVEL 02 / 05</span>
-            <span>•</span>
-            <span className="text-[#a69383]">GEOGRAPHIC PRECISION</span>
-          </div>
-          <h2 className="font-serif text-2xl sm:text-3xl font-bold text-[#faf6f0] mt-1">
+          <h2 className="font-serif text-2xl sm:text-3xl font-bold gold-gradient-text mt-1">
             THE INDIAN EDIT — LOCATE THE EDIT
           </h2>
-          <p className="text-xs text-[#faf6f0] mt-1">
+          <p className="text-xs text-[#f2ead9] mt-1">
             Pinpoint your own city on the map!
           </p>
         </div>
