@@ -12,7 +12,6 @@ import { Level2ZeroMileMap } from "./components/Screens/Level2ZeroMileMap";
 import { Level3DecodeTheBottle } from "./components/Screens/Level3DecodeTheBottle";
 import { Level4MasterTheBlend } from "./components/Screens/Level4MasterTheBlend";
 import { Level5HuntTheEdit } from "./components/Screens/Level5HuntTheEdit";
-import { ResultScreen } from "./components/Screens/ResultScreen";
 import { SocialPostScreen } from "./components/Screens/SocialPostScreen";
 import { UploadScreen } from "./components/Screens/UploadScreen";
 import { ScratchCardScreen } from "./components/Screens/ScratchCardScreen";
@@ -47,7 +46,7 @@ const MainExperience: React.FC = () => {
       case "screen-level-5":
         return <Level5HuntTheEdit />;
       case "screen-result":
-        return <ResultScreen />;
+        return <SocialPostScreen />;
       case "screen-social":
         return <SocialPostScreen />;
       case "screen-upload":
