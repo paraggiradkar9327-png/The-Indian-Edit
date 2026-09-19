@@ -23,17 +23,8 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
     <div className="relative min-h-[82vh] flex flex-col items-center justify-center px-4 py-8 sm:py-12 text-center animate-fade-in overflow-hidden">
       <ParticleEffect count={24} />
 
-      {/* Royal Eyebrow Badge */}
-      <div className="relative z-10 inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#170c07]/90 border border-[#d4af37]/50 text-xs font-semibold tracking-[0.25em] text-[#f7e7a9] uppercase mb-4 shadow-[0_0_20px_rgba(212,175,55,0.15)]">
-        <Sparkles className="w-3.5 h-3.5 text-[#d4af37]" />
-        <span>THE INDIAN EDIT PRESENTS</span>
-      </div>
-
       {/* Main Title Hierarchy */}
       <div className="relative z-10 max-w-3xl mx-auto mb-6">
-        <h2 className="font-serif text-lg sm:text-xl md:text-2xl font-semibold tracking-[0.3em] text-[#ab9580] uppercase mb-1">
-          THE INDIAN EDIT
-        </h2>
         <h1 className="font-serif text-4xl sm:text-6xl md:text-7xl font-bold tracking-[0.14em] text-[#faf5eb] uppercase leading-tight">
           HUNT THE{" "}
           <span className="gold-gradient-text drop-shadow-[0_4px_24px_rgba(212,175,55,0.4)]">
@@ -42,7 +33,7 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
         </h1>
 
         <p className="font-serif italic text-xl sm:text-2xl md:text-3xl text-[#f7e7a9] mt-3 font-medium">
-          “Can you find all 5?”
+          “Can you find all 5 The Indian Edit Bottle?”
         </p>
       </div>
 
@@ -78,7 +69,7 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
         </button>
       </div>
 
-      <div className="relative z-10 mt-6 flex items-center gap-6 text-[11px] font-mono tracking-widest text-[#ab9580] uppercase">
+      <div className="relative z-10 mt-6 flex items-center gap-6 text-[11px] font-mono tracking-widest text-[#faf5eb] uppercase">
         <span>3 PROGRESSIVE ROUNDS</span>
         <span>•</span>
         <span>AUTHENTIC HERITAGE</span>

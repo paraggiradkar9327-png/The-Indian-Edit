@@ -40,11 +40,11 @@ export const ScratchCardScreen: React.FC = () => {
         <span>GRAND FINALE PRIVILEGE</span>
       </div>
 
-      <h2 className="font-serif text-3xl sm:text-4xl font-bold text-[#faf6f0]">
+      <h2 className="font-serif text-3xl sm:text-4xl font-bold gold-gradient-text">
         Gold Foil Scratch Card
       </h2>
 
-      <p className="text-xs text-[#a69383] mt-1 max-w-sm mx-auto">
+      <p className="text-xs text-[#faf6f0] mt-1 max-w-sm mx-auto">
         Rub the metallic foil surface to reveal your limited-edition privilege
         code.
       </p>

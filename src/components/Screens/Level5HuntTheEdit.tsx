@@ -3,7 +3,7 @@ import { useGame } from "../../context/GameContext";
 import { HUNT_ROUNDS, HiddenBottle, SCORING } from "../../data/huntData";
 import { WelcomeScreen } from "../HuntTheEdit/WelcomeScreen";
 import { InstructionsScreen } from "../HuntTheEdit/InstructionsScreen";
-import { GameHeader } from "../HuntTheEdit/GameHeader";
+
 import { GameBoard } from "../HuntTheEdit/GameBoard";
 import { FoundIndicator } from "../HuntTheEdit/FoundIndicator";
 import { RoundComplete } from "../HuntTheEdit/RoundComplete";
@@ -12,6 +12,7 @@ import { FinalResult } from "../HuntTheEdit/FinalResult";
 import { ShareCard } from "../HuntTheEdit/ShareCard";
 import { RestartModal } from "../HuntTheEdit/RestartModal";
 import { sound } from "../../utils/audio";
+import { TimerIcon } from "lucide-react";
 
 type GameScreenState =
   | "welcome"
@@ -53,6 +54,16 @@ export const Level5HuntTheEdit: React.FC = () => {
       return 0;
     }
   });
+
+  const isUrgent = timeRemaining <= 10;
+  const isCritical = timeRemaining <= 5;
+
+  const formatTime = (secs: number) => {
+    const safe = Math.max(0, Math.floor(secs));
+    const m = Math.floor(safe / 60);
+    const s = safe % 60;
+    return `${m.toString().padStart(2, "0")}:${s.toString().padStart(2, "0")}`;
+  };
 
   // Best overall score
   const [bestScore, setBestScore] = useState<number>(() => {
@@ -297,20 +308,11 @@ export const Level5HuntTheEdit: React.FC = () => {
       {screenState === "round" && (
         <div className="w-full flex-1 flex flex-col animate-fade-in">
           {/* Top Bar Header */}
-          <GameHeader
-            roundNumber={currentRound.id}
-            roundTitle={currentRound.title}
-            timeRemaining={timeRemaining}
-            score={score}
-            soundMuted={globalState.soundMuted}
-            onToggleSound={toggleSound}
-            onOpenRestart={() => setIsRestartOpen(true)}
-          />
 
           {/* Subheader Status / Found Counter */}
           <div className="w-full max-w-5xl mx-auto px-4 pt-3 flex items-center justify-between">
             <div className="hidden sm:block">
-              <span className="text-xs font-mono tracking-widest text-[#ab9580] uppercase">
+              <span className="text-xs font-mono tracking-widest  uppercase">
                 {currentRound.subtitle} ({currentRound.difficulty})
               </span>
             </div>
@@ -320,10 +322,40 @@ export const Level5HuntTheEdit: React.FC = () => {
               totalCount={currentRound.bottles.length}
             />
 
-            <div className="hidden sm:block text-right">
-              <span className="text-xs font-mono tracking-widest text-[#d4af37]">
-                +1000 / BOTTLE
-              </span>
+            <div className="flex items-center justify-between sm:justify-end w-full sm:w-auto gap-4">
+              {/* Timer Display */}
+              <div
+                className={`flex items-center gap-1.5 px-3 py-1 rounded-xl border transition-all duration-300 ${
+                  isCritical
+                    ? "bg-[#8b151b]/30 border-[#e53e3e] text-[#feb2b2] animate-pulse shadow-[0_0_15px_rgba(229,62,62,0.4)]"
+                    : isUrgent
+                      ? "bg-[#e58325]/20 border-[#e58325]/70 text-[#fbd38d]"
+                      : "bg-[#140a05] border-[#d4af37]/40 text-[#f7e7a9]"
+                }`}
+              >
+                <TimerIcon
+                  className={`w-4 h-4 ${
+                    isCritical
+                      ? "text-[#e53e3e] animate-bounce"
+                      : isUrgent
+                        ? "text-[#e58325]"
+                        : "text-[#d4af37]"
+                  }`}
+                />
+                <span className="font-mono text-sm sm:text-base font-bold tracking-widest">
+                  {formatTime(timeRemaining)}
+                </span>
+              </div>
+
+              {/* Score Counter */}
+              <div className="flex items-center gap-2 px-3 py-1 rounded-xl bg-[#140a05] border border-[#d4af37]/40">
+                <span className="text-[10px] font-mono tracking-widest text-[#ab9580] uppercase">
+                  SCORE
+                </span>
+                <span className="font-mono text-sm sm:text-base font-bold text-[#faf5eb]">
+                  {score.toLocaleString()}
+                </span>
+              </div>
             </div>
           </div>
 

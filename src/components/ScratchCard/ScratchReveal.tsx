@@ -1,68 +1,77 @@
-import React, { useEffect, useRef, useState, useCallback } from "react";
+import React, { useLayoutEffect, useRef, useState, useCallback } from "react";
 import { Sparkles } from "lucide-react";
 import { sound } from "../../utils/audio";
 
 interface ScratchRevealProps {
-  /** The content underneath the foil — rendered once, always in the DOM,
-   *  the canvas just sits on top of it until scratched away. */
+  /** The content underneath the foil (coupon / prize). Always in the DOM, but
+   *  the opaque gold foil canvas sits on top until the customer scratches it. */
   children: React.ReactNode;
-  /** 0–100. Reveal fires once scratched percentage crosses this. */
+  /** 0–100. Reveal fires once the scratched percentage crosses this. */
   threshold?: number;
   /** Called once, the moment the threshold is crossed. */
   onReveal?: () => void;
   /** Controlled reveal state — lets the parent persist "already revealed"
    *  (e.g. from GameContext) instead of this component owning it alone. */
   revealed?: boolean;
+  /** Show the "Instant reveal" shortcut. Off by default so the customer has to
+   *  scratch the foil themselves before the coupon appears. */
+  allowInstantReveal?: boolean;
   className?: string;
 }
 
+const BRUSH_SIZE = 52; // px, diameter of the "coin" used to scratch
+
 /**
- * Generic gold-foil scratch card. Pulled out of ScratchCardScreen.tsx so the
- * scratch *mechanic* (canvas, pointer tracking, percentage math) is reusable
- * and testable on its own, separate from what's underneath it (prize copy,
- * claim button, etc. stay in the screen component).
+ * Generic gold-foil scratch card. The customer must rub the gold foil away;
+ * only then is the content underneath revealed.
  */
 export const ScratchReveal: React.FC<ScratchRevealProps> = ({
   children,
   threshold = 40,
   onReveal,
   revealed: revealedProp,
+  allowInstantReveal = false,
   className = "",
 }) => {
   const [internalRevealed, setInternalRevealed] = useState(false);
   const revealed = revealedProp ?? internalRevealed;
 
   const [scratchedPct, setScratchedPct] = useState(0);
+  // If the foil ever fails to paint we must NOT leave the coupon exposed.
+  const [foilFailed, setFoilFailed] = useState(false);
+
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
   const isDrawing = useRef(false);
+  const lastPoint = useRef<{ x: number; y: number } | null>(null);
   const lastCheck = useRef(0);
+  const firedRef = useRef(false);
+  const lastSize = useRef({ w: 0, h: 0 });
 
   const fireReveal = useCallback(() => {
+    if (firedRef.current) return;
+    firedRef.current = true;
     setInternalRevealed(true);
     sound.playSuccess();
     onReveal?.();
   }, [onReveal]);
 
-  // Paint the foil. Re-runs if the canvas gets resized.
+  // Paint the opaque gold foil.
+  // NOTE: canvas gradients cannot take CSS variables ("var(--x)" throws a
+  // SyntaxError), so we read the computed value of each variable first and
+  // fall back to a plain hex colour.
   const paintFoil = useCallback(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext("2d");
-    if (!ctx) return;
+    if (!ctx) throw new Error("2D canvas context unavailable");
     const { width: w, height: h } = canvas;
 
-    const goldGrad = ctx.createLinearGradient(0, 0, w, h);
-    goldGrad.addColorStop(0, "var(--gold-shimmer)");
-    goldGrad.addColorStop(0.3, "var(--gold-primary)");
-    goldGrad.addColorStop(0.6, "var(--gold-dark)");
-    goldGrad.addColorStop(0.8, "var(--gold-shimmer)");
-    goldGrad.addColorStop(1, "var(--gold-dark)");
-    // Canvas gradients can't resolve CSS vars directly — resolve them from
-    // the computed style of the container instead of hard-coding hex here.
     const style = getComputedStyle(containerRef.current || canvas);
     const resolve = (name: string, fallback: string) =>
       style.getPropertyValue(name)?.trim() || fallback;
+
+    ctx.globalCompositeOperation = "source-over";
 
     const grad = ctx.createLinearGradient(0, 0, w, h);
     grad.addColorStop(0, resolve("--gold-shimmer", "#fff3c4"));
@@ -96,20 +105,35 @@ export const ScratchReveal: React.FC<ScratchRevealProps> = ({
     ctx.fillText("YOUR PRIVILEGE REWARD", w / 2, h / 2 + 15);
   }, []);
 
-  useEffect(() => {
+  // Layout effect so the foil is painted before the browser's first paint —
+  // the coupon is never visible, not even for a single frame.
+  useLayoutEffect(() => {
     if (revealed) return;
     const canvas = canvasRef.current;
     const container = containerRef.current;
     if (!canvas || !container) return;
 
-    // Match canvas pixel size to its rendered size so scratching lines up
-    // with the pointer regardless of the container's actual width.
+    // Match canvas pixel size to the container's layout size. (clientWidth is
+    // unaffected by CSS transforms/animations, unlike getBoundingClientRect.)
     const resize = () => {
-      const rect = container.getBoundingClientRect();
-      canvas.width = rect.width;
-      canvas.height = rect.height;
-      paintFoil();
+      const w = container.clientWidth;
+      const h = container.clientHeight;
+      if (!w || !h) return;
+      // Only repaint when the size really changed — repainting wipes any
+      // scratching the customer has already done.
+      if (w === lastSize.current.w && h === lastSize.current.h) return;
+      lastSize.current = { w, h };
+      canvas.width = w;
+      canvas.height = h;
+      try {
+        paintFoil();
+        setFoilFailed(false);
+      } catch (err) {
+        console.error("Scratch foil failed to paint", err);
+        setFoilFailed(true);
+      }
     };
+    lastSize.current = { w: 0, h: 0 };
     resize();
     const ro = new ResizeObserver(resize);
     ro.observe(container);
@@ -118,9 +142,9 @@ export const ScratchReveal: React.FC<ScratchRevealProps> = ({
 
   const checkScratchPercentage = useCallback(() => {
     const canvas = canvasRef.current;
-    if (!canvas || revealed) return;
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
+    if (!canvas || revealed || firedRef.current) return;
+    const ctx = canvas.getContext("2d", { willReadFrequently: true });
+    if (!ctx || !canvas.width || !canvas.height) return;
 
     const { data } = ctx.getImageData(0, 0, canvas.width, canvas.height);
     let transparent = 0;
@@ -137,16 +161,27 @@ export const ScratchReveal: React.FC<ScratchRevealProps> = ({
   const scratchAt = (clientX: number, clientY: number) => {
     const canvas = canvasRef.current;
     if (!canvas || revealed) return;
-    const ctx = canvas.getContext("2d");
+    const ctx = canvas.getContext("2d", { willReadFrequently: true });
     if (!ctx) return;
     const rect = canvas.getBoundingClientRect();
     const x = ((clientX - rect.left) / rect.width) * canvas.width;
     const y = ((clientY - rect.top) / rect.height) * canvas.height;
 
+    // Erase the foil along the finger/mouse path (a continuous stroke, so fast
+    // movement doesn't leave gaps).
+    const from = lastPoint.current ?? { x, y };
     ctx.globalCompositeOperation = "destination-out";
+    ctx.lineWidth = BRUSH_SIZE;
+    ctx.lineCap = "round";
+    ctx.lineJoin = "round";
     ctx.beginPath();
-    ctx.arc(x, y, 26, 0, Math.PI * 2);
+    ctx.moveTo(from.x, from.y);
+    ctx.lineTo(x, y);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.arc(x, y, BRUSH_SIZE / 2, 0, Math.PI * 2);
     ctx.fill();
+    lastPoint.current = { x, y };
 
     const now = performance.now();
     if (now - lastCheck.current > 120) {
@@ -156,35 +191,50 @@ export const ScratchReveal: React.FC<ScratchRevealProps> = ({
     }
   };
 
+  const endStroke = () => {
+    if (!isDrawing.current) return;
+    isDrawing.current = false;
+    lastPoint.current = null;
+    // Final check so the last bit of scratching is never missed by the throttle.
+    checkScratchPercentage();
+  };
+
+  const showInstantButton = !revealed && (allowInstantReveal || foilFailed);
+
   return (
-    <div ref={containerRef} className={`relative select-none ${className}`}>
+    <div
+      ref={containerRef}
+      className={`relative select-none overflow-hidden ${className}`}
+      // Fail closed: if the foil couldn't be painted, hide the coupon rather
+      // than exposing it. (The instant-reveal button below stays visible.)
+      style={foilFailed && !revealed ? { visibility: "hidden" } : undefined}
+    >
       {children}
       {!revealed && (
         <canvas
           ref={canvasRef}
-          onMouseDown={() => (isDrawing.current = true)}
-          onMouseUp={() => (isDrawing.current = false)}
-          onMouseLeave={() => (isDrawing.current = false)}
-          onMouseMove={(e) =>
-            isDrawing.current && scratchAt(e.clientX, e.clientY)
-          }
-          onTouchStart={() => (isDrawing.current = true)}
-          onTouchEnd={() => (isDrawing.current = false)}
-          onTouchMove={(e) => {
-            if (isDrawing.current && e.touches[0]) {
-              scratchAt(e.touches[0].clientX, e.touches[0].clientY);
-            }
+          onPointerDown={(e) => {
+            e.currentTarget.setPointerCapture?.(e.pointerId);
+            isDrawing.current = true;
+            lastPoint.current = null;
+            scratchAt(e.clientX, e.clientY);
           }}
+          onPointerMove={(e) => {
+            if (isDrawing.current) scratchAt(e.clientX, e.clientY);
+          }}
+          onPointerUp={endStroke}
+          onPointerCancel={endStroke}
           className="absolute inset-0 h-full w-full cursor-crosshair touch-none rounded-xl"
         />
       )}
-      {!revealed && (
+      {showInstantButton && (
         <button
           onClick={fireReveal}
+          style={{ visibility: "visible" }}
           className="absolute bottom-2 right-2 z-10 flex items-center gap-1 rounded-full bg-[#170f0a]/80 px-2.5 py-1 text-[10px] text-(--gold-light) hover:underline"
         >
           <Sparkles className="h-3 w-3" />
-          Instant reveal ({scratchedPct}%)
+          {foilFailed ? "Reveal" : `Instant reveal (${scratchedPct}%)`}
         </button>
       )}
     </div>

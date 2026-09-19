@@ -16,18 +16,12 @@ export const InstructionsScreen: React.FC<InstructionsScreenProps> = ({
 
   return (
     <div className="max-w-4xl mx-auto py-8 sm:py-12 px-4 sm:px-6 animate-fade-in text-center">
-      {/* Eyebrow */}
-      <div className="inline-flex items-center gap-2 px-4 py-3 rounded-full bg-[#170c07]/90 border border-[#d4af37]/40 text-xs font-semibold tracking-[0.2em] text-[#f7e7a9] uppercase mb-4 shadow-md">
-        <ShieldCheck className="w-3.5 h-3.5 text-[#d4af37]" />
-        <span>HOW TO PLAY</span>
-      </div>
-
       <h1 className="font-serif text-3xl sm:text-5xl font-bold tracking-[0.12em] text-[#faf5eb] uppercase">
         HUNT THE <span className="gold-gradient-text">EDIT</span>
       </h1>
 
-      {/* 3 Instruction Cards */}
-      <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 text-left">
+      {/* 3 Instruction Cards — gap from title above: mt-10 (mobile) / sm:mt-16 (desktop) */}
+      <div className="mt-20 sm:mt-32 grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 text-left">
         {/* Card 01 */}
         <div className="p-6 rounded-2xl bg-[#140a05]/85 backdrop-blur-md border border-[#d4af37]/35 hover:border-[#d4af37]/70 transition-all duration-300 shadow-xl group">
           <div className="flex items-center justify-between mb-4">
@@ -86,8 +80,8 @@ export const InstructionsScreen: React.FC<InstructionsScreenProps> = ({
         </div>
       </div>
 
-      {/* Primary CTA */}
-      <div className="mt-8">
+      {/* Primary CTA — gap from cards above: mt-10 (mobile) / sm:mt-16 (desktop) */}
+      <div className="mt-10 sm:mt-24">
         <button
           type="button"
           id="btn-start-round-1"
