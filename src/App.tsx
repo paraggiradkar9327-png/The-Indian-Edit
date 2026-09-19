@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { GameProvider, useGame } from "./context/GameContext";
 import { Header } from "./components/Header";
-import { Footer } from "./components/Footer";
 
 // Screens
 import { LoginScreen } from "./components/Screens/LoginScreen";

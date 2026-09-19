@@ -36,15 +36,6 @@ export const IntroHeroSplash: React.FC<IntroHeroSplashProps> = ({
       <div className="absolute inset-x-0 top-0 h-40 bg-linear-to-b from-black/70 via-black/30 to-transparent pointer-events-none" />
       <div className="absolute inset-x-0 bottom-0 h-56 bg-linear-to-t from-black/80 via-black/40 to-transparent pointer-events-none" />
 
-      {/* Top Bar with Brand Identifier & Quick Skip */}
-      <div className="absolute top-0 inset-x-0 flex items-center justify-between px-4 sm:px-6 pt-4 sm:pt-6 z-10">
-        <div className="flex items-center gap-2">
-          <span className="font-serif tracking-[0.2em] text-sm sm:text-base font-bold gold-gradient-text uppercase drop-shadow-md">
-            THE INDIAN EDIT
-          </span>
-        </div>
-      </div>
-
       {/* Bottom CTA Action Bar */}
       <div className="absolute bottom-0 inset-x-0 flex flex-col items-center px-4 pb-6 sm:pb-8 pt-4 z-10">
         <button
