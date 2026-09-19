@@ -82,6 +82,16 @@ export const Level4MasterTheBlend: React.FC = () => {
         setIsBlended(true);
         sound.playSuccess();
       }
+
+      // "Proceed to Level 05" button on the iframe's result page
+      if (
+        event.origin === window.location.origin &&
+        data.source === "master-the-blend" &&
+        data.type === "PROCEED_TO_LEVEL_5"
+      ) {
+        sound.playSuccess();
+        navigateTo("screen-level-5");
+      }
     };
 
     window.addEventListener("message", handleBlendMessage);
@@ -154,46 +164,16 @@ export const Level4MasterTheBlend: React.FC = () => {
 
   return (
     <div className="max-w-5xl mx-auto py-6 px-4 sm:px-6 animate-fade-in">
-      {/* Level Header */}
-      <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-6">
-        <div></div>
-
-        {/* Live Score and Mode Switcher */}
-        <div className="flex items-center gap-3">
-          <div className="bg-[#22160f] border border-[#d4af37]/40 rounded-xl px-4 py-2 shadow-lg text-center">
-            <span className="text-[10px] text-[#a69383] uppercase font-bold">
-              SCORE
-            </span>
-            <div className="font-mono text-lg font-bold text-[#fff1b8]">
-              {state.blendScore > 0 ? state.blendScore : "0"} pts
-            </div>
-          </div>
-        </div>
-      </div>
-
       {/* Main Game Stage */}
       {viewMode === "iframe" ? (
         <div className="p-4 overflow-hidden relative">
-          <div className="w-full h-155 rounded-xl overflow-hidden bg-[#1a110a]/90 relative border-2 border-[#d4af37]">
+          <div className="w-full h-155 rounded-xl overflow-hidden relative ">
             <iframe
               ref={iframeRef}
               src="/master-the-blend/index.html"
               title="Master The Blend Interactive Experience"
               className="w-full h-full border-0"
             />
-          </div>
-
-          {/* Quick Continue Floating Bar */}
-          <div className="mt-4 p-4 rounded-xl bg-[#1e130d] border border-[#d4af37]/40 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <button
-              onClick={() => {
-                sound.playSuccess();
-                navigateTo("screen-level-5");
-              }}
-              className="w-full sm:w-auto px-6 py-2.5 btn-gold text-xs font-bold flex items-center justify-center gap-2 group cursor-pointer"
-            >
-              <span>Proceed to Level 05: Build Nagpur</span>
-            </button>
           </div>
         </div>
       ) : (

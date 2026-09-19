@@ -70,7 +70,6 @@ export const WelcomeScreen: React.FC = () => {
             aria-describedby="begin-challenge-hint"
           >
             <span>Begin Challenge 01</span>
-            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </button>
         </div>
       </div>

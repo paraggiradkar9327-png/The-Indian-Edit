@@ -27,27 +27,58 @@
 
     <!-- INTRO -->
     <section id="introScreen">
-      <h1>THE INDIAN EDIT</h1>
-      <div class="tagline">&ldquo;Different origins. One distinctive edit.&rdquo;</div>
+      <h1 class="gold-gradient-text">BLEND THE EDIT</h1>
       <p class="desc sans">Bring together the right elements and create the distinctive edit. Discover the harmonic
         convergence of Indian and Scottish spirits in a singular craft vessel.</p>
-      <div class="steps">
-        <div class="step"><b>01</b><span class="t">Find Origins</span><span class="d">Locate the 3 genuine origins among
-            the distractors</span></div>
-        <div class="step"><b>02</b><span class="t">Fill The Bottle</span><span class="d">Drag or tap each one into the
-            vessel</span></div>
-        <div class="step"><b>03</b><span class="t">Reveal Edit</span><span class="d">Complete the blend before time runs
-            out</span></div>
+
+
+      <div class="instruction-cards">
+
+        <!-- ===== Card 01: Find Origins ===== -->
+        <div class="card-scan">
+          <div class="card-scan__header">
+            <span class="card-scan__number">01</span>
+          </div>
+          <h3 class="card-scan__title">Find Origins</h3>
+          <p class="card-scan__text">
+            Locate the 3 genuine origins among the distractors.
+          </p>
+        </div>
+
+        <!-- ===== Card 02: Fill The Bottle ===== -->
+        <div class="card-scan">
+          <div class="card-scan__header">
+            <span class="card-scan__number">02</span>
+          </div>
+          <h3 class="card-scan__title">Fill The Bottle</h3>
+          <p class="card-scan__text">
+            Drag or tap each one into the vessel.
+          </p>
+        </div>
+
+        <!-- ===== Card 03: Reveal Edit ===== -->
+        <div class="card-scan">
+          <div class="card-scan__header">
+            <span class="card-scan__number">03</span>
+          </div>
+          <h3 class="card-scan__title">Reveal Edit</h3>
+          <p class="card-scan__text">
+            Complete the blend before time runs out.
+          </p>
+        </div>
+
       </div>
+
+
       <button class="btn-primary" id="startBtn">Start The Edit</button>
     </section>
 
     <!-- GAME -->
     <section id="gameScreen" class="hidden">
       <div class="game-header">
-        <span class="step-badge">STEP 1 OF 1</span>
-        <h2>MASTER THE BLEND</h2>
-        <p class="sans">Select the right origins and bring them into the <span class="accent">Indian Edit</span> bottle.
+        <h2 class="gold-gradient-text"> BLEND THE EDIT</h2>
+        <p class="sans">Select the right origins and bring them into the Indian
+          Edit bottle.
         </p>
         <div class="hud">
           <div class="hud-box">
@@ -84,9 +115,8 @@
 
     <!-- COMPLETED -->
     <section id="completedScreen" class="hidden center-screen">
-      <div class="badge-pill">Harmony Achieved</div>
-      <h1 class="result-title">EDIT COMPLETE</h1>
-      <p class="tagline">Different origins. One distinctive edit.</p>
+      <h1 class="result-title gold-gradient-text">EDIT COMPLETE</h1>
+
       <div class="score-box">
         <div class="hud-label">Your Blend Score</div>
         <div class="score-big" id="finalScore">0</div>
@@ -98,15 +128,17 @@
         </div>
       </div>
       <div class="actions">
-        <button class="btn-secondary" id="playAgainBtn">⟲ Play Again</button>
-
+        <button class="btn-gold" id="playAgainBtn">⟲ Play Again</button>
+        <div class="actions">
+          <button class="btn-gold" id="proceedBtn">Proceed to Level 05: Build Nagpur</button>
+        </div>
       </div>
 
     </section>
 
     <!-- TIMEOUT -->
     <section id="timeoutScreen" class="hidden center-screen">
-      <h2 class="result-title" style="font-size:1.6rem;">TIME EXPIRED</h2>
+      <h2 class="result-title gold-gradient-text" style="font-size:1.6rem;">TIME EXPIRED</h2>
       <p class="tagline" style="font-size:.9rem;">&ldquo;Mastery requires patience and precision.&rdquo;</p>
       <div class="score-box">
         <div class="hud-label">Points Recorded</div>
@@ -114,7 +146,7 @@
         <p class="sans note">Unite <b class="accent">Indian Malt</b>, <b class="accent">Indian Grain</b>, and <b
             class="accent">Scotch Malt</b> into the Edit vessel before 30 seconds elapse.</p>
       </div>
-      <button class="btn-secondary" id="retryBtn">⟲ Retry The Edit</button>
+      <button class="btn-gold" id="retryBtn">⟲ Retry The Edit</button>
     </section>
 
   </main>

@@ -151,6 +151,9 @@
     });
     document.getElementById('playAgainBtn')?.addEventListener('click', ()=>{ Audio_.playStart(); startGame(); });
     document.getElementById('retryBtn')?.addEventListener('click', ()=>{ Audio_.playStart(); startGame(); });
+    document.getElementById('proceedBtn')?.addEventListener('click', ()=>{
+  window.parent.postMessage({ source: 'master-the-blend', type: 'PROCEED_TO_LEVEL_5' }, '*');
+});
     document.getElementById('shareBtn')?.addEventListener('click', shareScore);
 
     function resetToIntro(){
@@ -336,9 +339,4 @@
 
     showScreen('intro');
   }
-
-  document.getElementById('level5Btn')?.addEventListener('click', ()=>{
-  Audio_.playComplete(); // stand-in for playSuccess — swap in a dedicated cue if you want a different sound
-  navigateTo('screen-level-5');
-});
 })();

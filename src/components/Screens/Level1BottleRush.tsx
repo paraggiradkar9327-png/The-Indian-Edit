@@ -3,16 +3,12 @@ import {
   ArrowRight,
   RotateCcw,
   Timer,
-  Award,
-  Sparkles,
-  Volume2,
-  VolumeX,
   Flame,
   Pause,
   Play,
-  Info,
   Trophy,
 } from "lucide-react";
+import { useGame } from "../../context/GameContext";
 
 // ==========================================
 // 1. INLINE CRISP VECTOR ASSETS (No 404s)
@@ -244,6 +240,7 @@ export const Level1BottleRush: React.FC<Level1BottleRushProps> = ({
   onNextLevel,
   onUpdateScore,
 }) => {
+  const { navigateTo } = useGame();
   const [gameActive, setGameActive] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
   const [timeLeft, setTimeLeft] = useState(10.0);
@@ -758,6 +755,7 @@ export const Level1BottleRush: React.FC<Level1BottleRushProps> = ({
                 onClick={() => {
                   soundEffect.playSuccess();
                   if (onNextLevel) onNextLevel();
+                  else navigateTo("screen-level-2");
                 }}
                 className="w-full sm:w-auto px-6 py-3 rounded-full bg-linear-to-r from-[#fce588] via-[#d4af37] to-[#b68b20] text-[#1a0f07] text-xs sm:text-sm font-bold flex items-center justify-center gap-2 group cursor-pointer shadow-lg active:scale-95 transition-transform"
               >
