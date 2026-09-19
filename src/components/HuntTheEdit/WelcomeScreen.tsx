@@ -44,12 +44,6 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
         <p className="font-serif italic text-xl sm:text-2xl md:text-3xl text-[#f7e7a9] mt-3 font-medium">
           “Can you find all 5?”
         </p>
-
-        <p className="mt-3 text-sm sm:text-base text-[#ebd9c0] max-w-xl mx-auto leading-relaxed font-light">
-          Five signature bottles are meticulously concealed inside each royal
-          scene. Scan the heritage interiors and tap every bottle before time
-          runs out.
-        </p>
       </div>
 
       {/* Hero Visual: The authentic supplied bottle image */}
@@ -67,24 +61,6 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
           />
         </div>
       </div>
-
-      {/* Best Score Badge (if present) */}
-      {bestScore > 0 && (
-        <div className="relative z-10 mb-6 inline-flex items-center gap-3 px-4 py-2 rounded-xl bg-[#140a05]/90 border border-[#d4af37]/35 text-xs text-[#ebd9c0] shadow-md">
-          <Trophy className="w-4 h-4 text-[#d4af37]" />
-          <span>
-            BEST HUNT SCORE:{" "}
-            <strong className="text-[#f7e7a9] font-mono text-sm ml-1">
-              {bestScore.toLocaleString()}
-            </strong>
-          </span>
-          {bestTime && (
-            <span className="text-[#ab9580] border-l border-[#ab9580]/30 pl-2">
-              ⏱️ {bestTime.toFixed(1)}s
-            </span>
-          )}
-        </div>
-      )}
 
       {/* Large Premium Luxury CTA */}
       <div className="relative z-10 flex flex-col sm:flex-row items-center gap-4">

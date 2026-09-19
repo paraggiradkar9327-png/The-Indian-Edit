@@ -61,11 +61,6 @@ export const ResultScreen: React.FC = () => {
         {/* Background Ambient Glow */}
         <div className="absolute inset-0 bg-radial from-[#d4af37]/15 via-transparent to-transparent blur-3xl pointer-events-none" />
 
-        <div className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-[#2e1e15] border border-[#d4af37]/50 text-xs font-semibold tracking-[0.25em] text-[#f5d77f] uppercase shadow mb-4">
-          <Sparkles className="w-3.5 h-3.5 text-[#d4af37]" />
-          <span>YOUR NAGPUR BRAND ARCHETYPE</span>
-        </div>
-
         <h1 className="font-serif text-3xl sm:text-5xl font-bold tracking-wide text-[#faf6f0]">
           {personality ? personality.name : "THE LUXURY EDITOR"}
         </h1>
@@ -138,29 +133,6 @@ export const ResultScreen: React.FC = () => {
             </div>
           ))}
         </div>
-
-        {/* Signature Cocktail Pairing Card */}
-        {personality?.signatureCocktail && (
-          <div className="mt-8 p-5 rounded-2xl bg-linear-to-r from-[#2e1e15] to-[#24150e] border border-[#d4af37]/40 max-w-xl mx-auto text-left flex items-start gap-4">
-            <div className="w-12 h-12 rounded-xl bg-[#170f0a] border border-[#d4af37]/50 flex items-center justify-center text-2xl shrink-0 shadow">
-              🍸
-            </div>
-            <div>
-              <span className="text-[10px] font-bold tracking-widest text-[#d4af37] uppercase">
-                Curated Pour
-              </span>
-              <h4 className="font-serif text-base font-bold text-[#faf6f0]">
-                {personality.signatureCocktail.name}
-              </h4>
-              <p className="text-xs text-[#warm-beige] mt-1">
-                {personality.signatureCocktail.ingredients}
-              </p>
-              <p className="text-[11px] text-[#a69383] italic mt-1">
-                Garnish: {personality.signatureCocktail.garnish}
-              </p>
-            </div>
-          </div>
-        )}
 
         {/* Primary Action Buttons */}
         <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
