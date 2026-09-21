@@ -505,7 +505,7 @@ export const Level1BottleRush: React.FC<Level1BottleRushProps> = ({
 
         {/* Ambient Top Glow */}
         <div
-          className="absolute -top-24 left-1/2 -translate-x-1/2 w-3/4 h-36 bg-[#d4af37]/15 rounded-full blur-3xl pointer-events-none"
+          className="absolute -top-24 left-1/2 -translate-x-1/2 w-3/4 h-36 rounded-full blur-3xl pointer-events-none"
           aria-hidden="true"
         />
 

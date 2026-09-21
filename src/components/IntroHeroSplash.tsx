@@ -23,12 +23,12 @@ export const IntroHeroSplash: React.FC<IntroHeroSplashProps> = ({
       <picture>
         <source
           media="(orientation: portrait)"
-          srcSet="src/assets/images/NewCreative-portrait.png"
+          srcSet="src/assets/images/fullSize.png"
         />
         <img
-          src="src/assets/images/NewCreative.png"
+          src="src/assets/images/fullSize.png"
           alt="The Indian Edit Super Premium Whisky"
-          className="absolute inset-0 w-full h-full object-contain"
+          className="absolute inset-0 w-full h-full object-contain opacity-55"
         />
       </picture>
 

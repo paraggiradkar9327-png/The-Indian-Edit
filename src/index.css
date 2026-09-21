@@ -49,7 +49,7 @@
     position: fixed;
     inset: 0;
     z-index: -1;
-    background-image: url("assets/images/NewCreative.png");
+    background-image: url("assets/images/fullSize.png");
     background-position: center top;
     background-repeat: no-repeat;
     background-size: cover;

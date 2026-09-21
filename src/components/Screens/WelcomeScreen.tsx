@@ -12,7 +12,7 @@ export const WelcomeScreen: React.FC = () => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto py-28 px-4 sm:px-6 animate-fade-in text-center relative">
+    <div className="max-w-4xl mx-auto py-12 px-4 sm:px-6 animate-fade-in text-center relative">
       {/* Darkened scrim with backdrop blur to heavily suppress and defuse baked-in background watermark text */}
       <div
         aria-hidden="true"

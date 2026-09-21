@@ -71,7 +71,7 @@ export const Header: React.FC<HeaderProps> = ({ onShowIntroSplash }) => {
   ];
 
   return (
-    <header className="sticky top-0 z-40 w-full bg-[#070403]/85 backdrop-blur-md border-b border-[#d4af37]/30 transition-all">
+    <header className="sticky top-0 z-40 w-full transition-all">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
         {/* Brand Crest & Title */}
         <button
