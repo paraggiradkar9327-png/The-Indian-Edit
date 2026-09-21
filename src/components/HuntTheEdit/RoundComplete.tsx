@@ -28,12 +28,6 @@ export const RoundComplete: React.FC<RoundCompleteProps> = ({
       <ParticleEffect count={30} />
 
       <div className="relative w-full max-w-md p-6 sm:p-8 rounded-3xl bg-linear-to-b from-[#1c0d06] via-[#140804] to-[#0a0402] border border-[#d4af37] shadow-[0_20px_60px_rgba(212,175,55,0.4)] text-center">
-        {/* Shimmer Badge */}
-        <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-[#241209] border border-[#d4af37]/60 text-xs font-semibold tracking-[0.25em] text-[#f7e7a9] uppercase mb-4 shadow-md">
-          <Sparkles className="w-3.5 h-3.5 text-[#d4af37]" />
-          <span>EXQUISITE PRECISION</span>
-        </div>
-
         <h2 className="font-serif text-3xl sm:text-4xl font-bold tracking-[0.14em] text-[#faf5eb] uppercase">
           ROUND COMPLETE
         </h2>

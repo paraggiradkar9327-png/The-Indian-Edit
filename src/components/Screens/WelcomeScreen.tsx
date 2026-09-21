@@ -32,7 +32,7 @@ export const WelcomeScreen: React.FC = () => {
             completely neutralizing background watermark text ("THE INDIAN EDIT" / "INDIA'S RICH HERITAGE") */}
         <span
           aria-hidden="true"
-          className="absolute -inset-x-4 -inset-y-3 sm:-inset-x-6 sm:-inset-y-4 bg-black/20 backdrop-blur-md rounded-2xl -z-10 shadow-2xl"
+          className="absolute -inset-x-4 -inset-y-3 sm:-inset-x-6 sm:-inset-y-4 -z-10"
         />
         India's Rich Heritage <br />
         <span className="gold-gradient-text drop-shadow-[0_3px_12px_rgba(0,0,0,0.9)]">
@@ -42,13 +42,10 @@ export const WelcomeScreen: React.FC = () => {
 
       {/* Connecting divider — visually ties the heading to the reward card below it,
           signaling they're one grouped unit rather than two separate sections */}
-      <div
-        aria-hidden="true"
-        className="mx-auto mt-8 h-10 w-px bg-linear-to-b from-[#d4af37]/70 to-transparent"
-      />
+      <div aria-hidden="true" className="mx-auto mt-8 h-10 w-px " />
 
       {/* Reward Incentive Card */}
-      <div className="mt-4 p-4 sm:p-5 rounded-2xl bg-linear-to-r from-[#1f1008]/90 via-[#2d160b]/90 to-[#140a05]/90 backdrop-blur-md border border-[#d4af37]/60 max-w-2xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 shadow-2xl">
+      <div className="mt-4 p-4 sm:p-5 rounded-2xl max-w-2xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 ">
         <div className="flex items-center gap-3 text-left">
           <div className="w-12 h-12 rounded-full bg-linear-to-br from-[#f7e7a9] to-[#d4af37] text-[#070403] flex items-center justify-center font-bold text-xl shadow-lg shrink-0">
             🎁
@@ -57,7 +54,7 @@ export const WelcomeScreen: React.FC = () => {
             <h4 className="font-serif text-sm sm:text-base font-bold text-[#faf5eb]">
               Grand Finale Privilege Reward
             </h4>
-            <p className="text-xs text-[#f7e7a9]">
+            <p className="text-xs text-[#f2ead9]">
               Unlocks custom 1080p Instagram post + Gold Foil Scratch Card.
             </p>
           </div>

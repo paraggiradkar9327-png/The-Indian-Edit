@@ -163,20 +163,6 @@ export const Header: React.FC<HeaderProps> = ({ onShowIntroSplash }) => {
             )}
           </div>
 
-          {/* Audio Toggle */}
-          <button
-            onClick={toggleSound}
-            className="p-2 rounded-full border border-[#d4af37]/35 bg-[#130a05] text-[#f7e7a9] hover:bg-[#1f1008] hover:border-[#d4af37] transition-all cursor-pointer"
-            title={state.soundMuted ? "Unmute Audio" : "Mute Audio"}
-            aria-label="Toggle Audio"
-          >
-            {state.soundMuted ? (
-              <VolumeX className="w-4 h-4 text-[#ab9580]" />
-            ) : (
-              <Volume2 className="w-4 h-4 text-[#d4af37]" />
-            )}
-          </button>
-
           {/* Quick Login Link */}
           {state.currentScreen !== "screen-login" && !state.otpVerified && (
             <button

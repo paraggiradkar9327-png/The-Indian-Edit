@@ -235,7 +235,7 @@ export const Level1BottleRush: React.FC<Level1BottleRushProps> = ({
   const { navigateTo } = useGame();
   const [gameActive, setGameActive] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
-  const [timeLeft, setTimeLeft] = useState(10.0);
+  const [timeLeft, setTimeLeft] = useState(15.0);
   const [score, setScore] = useState(0);
   const [bottlesCount, setBottlesCount] = useState(0);
   const [combo, setCombo] = useState(0);
@@ -314,7 +314,7 @@ export const Level1BottleRush: React.FC<Level1BottleRushProps> = ({
         y: -12,
         speed: Math.random() * 0.3 + 0.4,
         points: pts,
-        size: type === "tie_bottle" ? 64 : 52,
+        size: type === "tie_bottle" ? 74 : 52,
         collected: false,
         icon: getItemIcon(type),
       };
@@ -535,11 +535,11 @@ export const Level1BottleRush: React.FC<Level1BottleRushProps> = ({
             {/* Monogram Seal */}
 
             <h2 className="font-serif text-[clamp(2rem,5.5vw,3.4rem)] font-bold gold-gradient-text tracking-wide mb-4">
-              Catch The Indian Edit Bottles!
+              Catch The Edit!
             </h2>
 
             <p className="text-xs sm:text-sm  text-[#f2ead9] mt-2 sm:mt-3 leading-relaxed max-w-md mx-auto mb-3">
-              Tap or click falling luxury bottles (
+              Tap or click falling luxury The Indian Edit bottles (
               <span className="text-[#fce588] font-bold">+100</span>) and
               heritage tokens (
               <span className="text-[#4ade80] font-bold">+150</span>). Avoid
@@ -570,7 +570,7 @@ export const Level1BottleRush: React.FC<Level1BottleRushProps> = ({
                 <img
                   src={getItemIcon("heritage_token")}
                   alt=""
-                  className="w-7 h-7 sm:w-8 sm:h-8 object-contain shrink-0"
+                  className="w-10 h-16 sm:w-8 sm:h-8 object-contain shrink-0"
                 />
                 <div>
                   <div className="text-[10px] sm:text-xs font-bold text-[#4ade80]">
@@ -607,7 +607,7 @@ export const Level1BottleRush: React.FC<Level1BottleRushProps> = ({
                 aria-label="Start 10 Second Rush Challenge"
               >
                 <span className="font-serif tracking-wider uppercase">
-                  Start 10s Rush
+                  Start Rush
                 </span>
               </button>
             </div>
@@ -672,22 +672,22 @@ export const Level1BottleRush: React.FC<Level1BottleRushProps> = ({
             role="dialog"
             aria-modal="true"
           >
-            <span className="text-[11px] sm:text-xs font-bold tracking-widest text-[#d4af37] uppercase mb-3">
+            <span className="text-[11px] sm:text-lg font-bold tracking-widest text-[#d4af37] uppercase mb-3">
               Challenge Complete
             </span>
 
             <h2 className="font-serif text-[clamp(2rem,5.5vw,3.4rem)] font-bold gold-gradient-text  m-3 ">
-              Harvest Rush Cleared!
+              Edit Catch Complete!
             </h2>
 
-            <p className="text-xs sm:text-sm text-[#f2ead9] mt-1">
+            <p className="text-md sm:text-md text-[#f2ead9] mt-1">
               You successfully protected the harvest line.
             </p>
 
             {/* Score Breakdown */}
-            <div className="grid grid-cols-2 gap-3 my-4 sm:my-5 p-3 sm:p-4 rounded-xl bg-[#26160d] border border-[#d4af37]/35 w-full max-w-md">
+            <div className="grid grid-cols-2 gap-3 my-4 sm:my-5 p-3 sm:p-4 rounded-xl border border-[#d4af37]/35 w-full max-w-md">
               <div className="text-center border-r border-[#3d261a] pr-2">
-                <div className="text-[10px] sm:text-[11px] text-[#b39b88] uppercase font-bold tracking-wider">
+                <div className="text-[10px] sm:text-[11px] text-[#f2ead9] uppercase font-bold tracking-wider">
                   Bottles Caught
                 </div>
                 <div className="font-serif text-2xl sm:text-3xl font-bold text-[#fce588] mt-0.5">
@@ -695,7 +695,7 @@ export const Level1BottleRush: React.FC<Level1BottleRushProps> = ({
                 </div>
               </div>
               <div className="text-center pl-2">
-                <div className="text-[10px] sm:text-[11px] text-[#b39b88] uppercase font-bold tracking-wider">
+                <div className="text-[10px] sm:text-[11px] text-[#f2ead9] uppercase font-bold tracking-wider">
                   Total Score
                 </div>
                 <div className="font-serif text-2xl sm:text-3xl font-bold text-[#fdf8f0] mt-0.5">

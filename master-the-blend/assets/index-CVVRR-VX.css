@@ -611,33 +611,57 @@ main {
   margin-top: 14px;
 }
 
-.btn-gold {
-  margin-top: 14px;
+.edit-button {
   width: 100%;
-  max-width: 320px;
-  padding: 13px 24px;
-  background: linear-gradient(135deg, var(--brass) 0%, var(--copper) 100%);
-  color: var(--ink);
-  font-size: 0.78rem;
+  padding: 12px 24px;
+  border-radius: 9999px;
+
+  background: linear-gradient(to right, #fce588, #d4af37, #b68b20);
+
+  color: #1a0f07;
+  font-size: 14px;
   font-weight: 700;
-  letter-spacing: 0.05em;
-  border-radius: 2px;
+
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
+
+  cursor: pointer;
+
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
+
   transition:
     transform 0.2s ease,
-    box-shadow 0.2s ease;
+    box-shadow 0.2s ease,
+    filter 0.2s ease;
 }
-.btn-gold:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 22px -8px rgba(201, 161, 90, 0.55);
-}
-@media (min-width: 480px) {
-  .btn-gold {
+
+/* Tablet / Desktop */
+@media (min-width: 640px) {
+  .edit-button {
     width: auto;
+    font-size: 14px;
   }
+}
+
+/* Hover */
+.edit-button:hover {
+  transform: translateY(-2px) scale(1.02);
+
+  background: linear-gradient(to right, #fff1a8, #e5c34b, #c99d2e);
+
+  box-shadow:
+    0 14px 25px rgba(182, 139, 32, 0.35),
+    0 0 18px rgba(252, 229, 136, 0.35);
+
+  filter: brightness(1.05);
+}
+
+/* Click / Active */
+.edit-button:active {
+  transform: scale(0.95);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
 #introScreen .instruction-cards {
@@ -660,10 +684,8 @@ main {
   align-items: center;
   padding: 10px 10px;
   text-align: center;
-  background: var(--glass); /* dark glass, same as .ingredient */
-  border: 1px solid var(--hair); /* thin brass hairline */
+  border: 2px solid var(--hair); /* thin brass hairline */
   border-radius: 2px;
-  backdrop-filter: blur(6px);
   transition:
     border-color 0.2s ease,
     transform 0.25s ease,
@@ -691,7 +713,7 @@ main {
 
 .card-scan__title {
   font-family: "Outfit", sans-serif;
-  font-size: 0.95rem;
+  font-size: 1.2rem;
   font-weight: 500;
   letter-spacing: 0.02em;
   color: var(--brass-bright);
@@ -700,7 +722,7 @@ main {
 .card-scan__text {
   margin-bottom: 6px;
   font-family: "Outfit", sans-serif;
-  font-size: 0.78rem;
+  font-size: 0.85rem;
   letter-spacing: 0.02em;
   line-height: 1.55;
   color: var(--parchment);

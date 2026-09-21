@@ -38,39 +38,43 @@ export const Level2ZeroMileMap: React.FC = () => {
     const clickX = e.clientX - rect.left;
     const clickY = e.clientY - rect.top;
 
-    // Convert to SVG viewBox coordinates
     const scaleX = INDIA_MAP_DATA.width / rect.width;
     const scaleY = INDIA_MAP_DATA.height / rect.height;
     const svgX = clickX * scaleX;
     const svgY = clickY * scaleY;
 
-    // Unproject to lat/lon
     const normX = svgX / INDIA_MAP_DATA.width;
     const normY = svgY / INDIA_MAP_DATA.height;
     const [lon, lat] = INDIA_MAP_DATA.unproject(normX, normY);
 
-    // Compute distance to the consumer's own city (their login answer)
-    const dist = Math.round(
-      INDIA_MAP_DATA.haversineKm(lat, lon, targetCity.lat, targetCity.lon),
-    );
-    setDistanceKm(dist);
-
-    // Scoring formula: 1,000 pts minus distance penalty, minimum 300 pts
-    const calculatedScore = Math.max(
-      300,
-      Math.min(1000, Math.round(1000 - dist * 0.9)),
-    );
-    setScore(calculatedScore);
+    // Just drop the pin — no scoring yet
     setUserPin({ x: svgX, y: svgY, lat, lon });
 
     sound.playClick();
   };
 
   const handleConfirmGuess = () => {
-    if (!userPin || score === null) return;
+    if (!userPin) return;
+
+    // Compute distance/score only now, when the guess is locked in
+    const dist = Math.round(
+      INDIA_MAP_DATA.haversineKm(
+        userPin.lat,
+        userPin.lon,
+        targetCity.lat,
+        targetCity.lon,
+      ),
+    );
+    const calculatedScore = Math.max(
+      300,
+      Math.min(1000, Math.round(1000 - dist * 0.9)),
+    );
+
+    setDistanceKm(dist);
+    setScore(calculatedScore);
     sound.playSuccess();
     setSubmitted(true);
-    updateZeroScore(score, { x: userPin.x, y: userPin.y });
+    updateZeroScore(calculatedScore, { x: userPin.x, y: userPin.y });
   };
 
   const handleReset = () => {
@@ -163,32 +167,6 @@ export const Level2ZeroMileMap: React.FC = () => {
                   </path>
                 ))}
               </g>
-
-              {/* Major Cities subtle markers (target city is hidden until reveal) */}
-              {Object.entries(INDIA_MAP_DATA.cities).map(([key, city]) => {
-                if (city.name.toLowerCase() === targetCity.name.toLowerCase())
-                  return null;
-                return (
-                  <g key={key} opacity="0.45">
-                    <circle
-                      cx={city.svgX}
-                      cy={city.svgY}
-                      r="2.5"
-                      fill="#a69383"
-                    />
-                    <text
-                      x={city.svgX}
-                      y={city.svgY - 5}
-                      fontSize="9"
-                      fill="#8c7766"
-                      textAnchor="middle"
-                      fontFamily="Montserrat, sans-serif"
-                    >
-                      {city.name}
-                    </text>
-                  </g>
-                );
-              })}
 
               {/* Target City Marker — the consumer's own city from the login
                   form. Only revealed once the guess is submitted, so it

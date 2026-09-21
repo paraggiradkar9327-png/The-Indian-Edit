@@ -1,15 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useGame } from "../../context/GameContext";
-import {
-  ZoomIn,
-  ZoomOut,
-  CheckCircle2,
-  ArrowRight,
-  RotateCcw,
-  Sparkles,
-  HelpCircle,
-  X,
-} from "lucide-react";
+import { ZoomIn, ZoomOut, CheckCircle2, X } from "lucide-react";
 import { sound } from "../../utils/audio";
 
 interface Hotspot {
@@ -244,7 +235,7 @@ export const Level3DecodeTheBottle: React.FC = () => {
       {/* Main Interactive Stage */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
         {/* Bottle Explorer View */}
-        <div className="lg:col-span-8 gold-card p-4 sm:p-6 relative overflow-hidden flex flex-col items-center justify-center min-h-130">
+        <div className="lg:col-span-8 p-4 sm:p-6 relative overflow-hidden flex flex-col items-center justify-center min-h-130">
           {/* Zoom & Mode Controls */}
           <div className="absolute top-4 left-4 z-20 flex items-center gap-2">
             <button
@@ -268,16 +259,6 @@ export const Level3DecodeTheBottle: React.FC = () => {
             <span className="text-xs font-mono text-[#a69383] ml-1">
               {Math.round(zoomLevel * 100)}%
             </span>
-          </div>
-
-          {/* Toggle embedded iframe mode */}
-          <div className="absolute top-4 right-4 z-20">
-            <button
-              onClick={() => setUseIframe(!useIframe)}
-              className="text-[11px] px-3 py-1 rounded-full bg-[#22160f] border border-[#d4af37]/30 text-[#f5d77f] hover:bg-[#2e1e15]"
-            >
-              {useIframe ? "Switch to Native Mode" : "Switch to Canvas Mode"}
-            </button>
           </div>
 
           {useIframe ? (
@@ -338,7 +319,7 @@ export const Level3DecodeTheBottle: React.FC = () => {
             <h3 className="font-serif text-lg font-bold text-[#faf6f0] flex items-center gap-2">
               <span>Craft Hotspot Index</span>
             </h3>
-            <p className="text-xs text-[#a69383] mt-1">
+            <p className="text-xs text-[#f2ead9] mt-1">
               Click any detail below or tap the pins on the bottle.
             </p>
 
@@ -423,7 +404,7 @@ export const Level3DecodeTheBottle: React.FC = () => {
               </div>
               <button
                 onClick={() => setActiveHotspot(null)}
-                className="p-1 rounded-lg text-[#a69383] hover:text-[#faf6f0] transition-colors"
+                className="p-1 rounded-lg text-[#a69383] hover:text-[#faf6f0] transition-colors cursor-pointer"
               >
                 <X className="w-5 h-5" />
               </button>
