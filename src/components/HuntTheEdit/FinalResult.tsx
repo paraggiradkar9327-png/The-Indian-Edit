@@ -102,6 +102,17 @@ export const FinalResult: React.FC<FinalResultProps> = ({
 
       {/* CTAs */}
       <div className="relative z-10 flex flex-col sm:flex-row items-center gap-3.5 w-full max-w-md mx-auto mt-4">
+        <button
+          type="button"
+          onClick={() => {
+            sound.playClick();
+            onRestart();
+          }}
+          className="w-full sm:w-auto px-6 py-3 rounded-full bg-linear-to-r from-[#fce588] via-[#d4af37] to-[#b68b20] text-[#1a0f07] text-xs sm:text-sm font-bold flex items-center justify-center gap-2 group cursor-pointer shadow-lg active:scale-95 transition-transform"
+        >
+          <RotateCcw className="w-3.5 h-3.5" />
+          <span>PLAY AGAIN</span>
+        </button>
         {onContinueToGrandFinale && (
           <button
             type="button"
@@ -115,18 +126,6 @@ export const FinalResult: React.FC<FinalResultProps> = ({
             <span>CLAIM REWARD & CERTIFICATE</span>
           </button>
         )}
-
-        <button
-          type="button"
-          onClick={() => {
-            sound.playClick();
-            onRestart();
-          }}
-          className="w-full sm:w-auto px-6 py-3 rounded-full bg-linear-to-r from-[#fce588] via-[#d4af37] to-[#b68b20] text-[#1a0f07] text-xs sm:text-sm font-bold flex items-center justify-center gap-2 group cursor-pointer shadow-lg active:scale-95 transition-transform"
-        >
-          <RotateCcw className="w-3.5 h-3.5" />
-          <span>PLAY AGAIN</span>
-        </button>
       </div>
     </div>
   );

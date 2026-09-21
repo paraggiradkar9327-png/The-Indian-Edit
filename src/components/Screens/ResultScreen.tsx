@@ -23,31 +23,31 @@ export const ResultScreen: React.FC = () => {
 
   const scoreRows = [
     {
-      label: "Harvest Rush (L1)",
+      label: "Catch The Edit(L1)",
       score: state.scoreRush,
       max: 2000,
       icon: "🍊",
     },
     {
-      label: "Zero Mile Precision (L2)",
+      label: "Mile Map (L2)",
       score: state.scoreZero,
       max: 1000,
       icon: "📍",
     },
     {
-      label: "Bottle Provenance (L3)",
+      label: "Decode The Bottle (L3)",
       score: state.decodeScore,
       max: 1000,
       icon: "🔍",
     },
     {
-      label: "Alchemy & Blend (L4)",
+      label: "Blend The Edit (L4)",
       score: state.blendScore,
       max: 2000,
       icon: "🥃",
     },
     {
-      label: "Nagpur Vision (L5)",
+      label: "Hunt The Edit (L5)",
       score: state.scoreCity,
       max: 3500,
       icon: "🏛️",

@@ -113,7 +113,7 @@ Your style. Your story. Your Indian Edit. What's yours?\n\n#TheIndianEdit #India
               The Indian Edit
             </div>
             <div className="mt-2.5 text-[13px] tracking-[3.5px] text-(--muted-sand)">
-              NAGPUR EDIT — ZERO MILE OF INDIA
+              THE INDIAN EDIT — MILE MAP OF INDIA
             </div>
           </div>
 
@@ -151,7 +151,7 @@ Your style. Your story. Your Indian Edit. What's yours?\n\n#TheIndianEdit #India
                 @TheIndianEdit
               </div>
               <div className="text-[13px] text-(--muted-sand)">
-                #TheIndianEdit #NagpurEdit #ZeroMile
+                #TheIndianEdit #theindianwhisky #abdl_india
               </div>
             </div>
             <div className="flex h-16.5 w-16.5 items-center justify-center border border-(--gold-border) text-center text-[9px] tracking-wider text-(--muted-sand)">

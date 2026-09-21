@@ -20,6 +20,8 @@ import { SettingsModal } from "./components/Modals/SettingsModal";
 import { LeaderboardModal } from "./components/Modals/LeaderboardModal";
 import { IntroHeroSplash } from "./components/IntroHeroSplash";
 
+import { LoadingScreen } from "./components/LoadingScreen";
+
 const MainExperience: React.FC = () => {
   const { state } = useGame();
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
@@ -83,6 +85,11 @@ const MainExperience: React.FC = () => {
 };
 
 export function App() {
+  const [appLoaded, setAppLoaded] = useState(false);
+
+  if (!appLoaded) {
+    return <LoadingScreen onComplete={() => setAppLoaded(true)} />;
+  }
   return (
     <GameProvider>
       <MainExperience />

@@ -1,5 +1,5 @@
 /**
- * THE INDIAN EDIT — NAGPUR INTERACTIVE BRAND EXPERIENCE
+ * THE INDIAN EDIT — INTERACTIVE BRAND EXPERIENCE
  * Vanilla JavaScript Engine
  * Luxury Indian Heritage × Contemporary Luxury × Sustainable Living
  */
@@ -10,7 +10,7 @@
   /* ==========================================================================
      1. GLOBAL CONSTANTS & AUDIO SYNTHESIZER
      ========================================================================== */
-  const STORAGE_KEY = 'the_indian_edit_nagpur_v1';
+  const STORAGE_KEY = 'the_indian_edit_v1';
 
   // Web Audio Synthesizer (Reliable offline audio without missing files or CORS)
   class SoundEngine {
