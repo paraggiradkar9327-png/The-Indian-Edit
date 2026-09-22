@@ -37,7 +37,7 @@ export const SocialPostScreen: React.FC = () => {
         <h2 className="font-serif text-3xl sm:text-4xl font-bold text-[#faf6f0] mt-1">
           Share Your Archetype
         </h2>
-        <p className="text-xs text-[#a69383] mt-1">
+        <p className="text-xs text-[#f2ead9 ] mt-1">
           Download your card or copy the caption to post on Instagram.
         </p>
       </div>
