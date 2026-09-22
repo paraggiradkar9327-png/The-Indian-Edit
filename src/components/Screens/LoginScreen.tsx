@@ -191,7 +191,7 @@ export const LoginScreen: React.FC = () => {
                   className="mt-0.5 rounded border-[#d4af37]/60 text-[#d4af37] focus:ring-[#d4af37] bg-[#170f0a]"
                 />
                 <span>
-                  I confirm that I am 21 years of age or older, and agree to
+                  I confirm that I am 25 years of age or older, and agree to
                   receive my luxury personality report & reward notification.
                 </span>
               </label>

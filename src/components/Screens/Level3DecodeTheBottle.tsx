@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useGame } from "../../context/GameContext";
 import { ZoomIn, ZoomOut, CheckCircle2, X } from "lucide-react";
 import { sound } from "../../utils/audio";
+import NewBottle from "../../assets/images/NewBottle.png";
 
 interface Hotspot {
   id: string;
@@ -274,7 +275,7 @@ export const Level3DecodeTheBottle: React.FC = () => {
                 style={{ transform: `scale(${zoomLevel})` }}
               >
                 <img
-                  src="src\assets\images\NewBottle.png"
+                  src={NewBottle}
                   alt="The Indian Edit Bottle"
                   className="block h-110 w-auto max-w-full object-contain pointer-events-none rounded-lg shadow-2xl"
                   referrerPolicy="no-referrer"
