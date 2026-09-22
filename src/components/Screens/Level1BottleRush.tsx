@@ -549,7 +549,7 @@ export const Level1BottleRush: React.FC<Level1BottleRushProps> = ({
             </p>
 
             {/* Accessible Legend Cards */}
-            <div className="grid grid-cols-3 gap-2 sm:gap-3 mt-4 sm:mt-5 p-2.5 sm:p-3 rounded-xl bg-[#25160d] border border-[#d4af37]/25 text-left w-full max-w-md mb-4">
+            <div className="grid grid-cols-3 gap-2 sm:gap-3 mt-4 sm:mt-5 p-2.5 sm:p-3 rounded-xl bg-[#160602] border border-[#d4af37]/25 text-left w-full max-w-md mb-4">
               <div className="flex items-center gap-2 p-1.5 rounded-lg bg-[#1a0f08]/80 border border-[#d4af37]/20">
                 <img
                   src={getItemIcon("tie_bottle")}

@@ -686,6 +686,7 @@ main {
   text-align: center;
   border: 2px solid var(--hair); /* thin brass hairline */
   border-radius: 2px;
+  background-color: #160602;
   transition:
     border-color 0.2s ease,
     transform 0.25s ease,

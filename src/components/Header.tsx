@@ -79,13 +79,12 @@ export const Header: React.FC<HeaderProps> = ({ onShowIntroSplash }) => {
           className="flex items-center gap-3 text-left group focus:outline-none cursor-pointer"
           title="Return to Experience Home"
         >
-          <div>
-            <span className="block font-serif text-lg sm:text-xl font-bold tracking-[0.18em] gold-gradient-text group-hover:text-[#f7e7a9] transition-colors">
-              THE INDIAN EDIT
-            </span>
-            <span className="block text-[10px] sm:text-xs tracking-[0.25em] text-[#d4af37] font-medium uppercase">
-              Super Premium Whisky
-            </span>
+          <div className="mt-5 ml-10">
+            <img
+              src="src\assets\images\editLogo.svg"
+              alt=""
+              className="h-36 w-36"
+            />
           </div>
         </button>
 

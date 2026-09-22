@@ -28,7 +28,7 @@ export const IntroHeroSplash: React.FC<IntroHeroSplashProps> = ({
         <img
           src="src/assets/images/fullSize.png"
           alt="The Indian Edit Super Premium Whisky"
-          className="absolute inset-0 w-full h-full object-contain opacity-55"
+          className="absolute inset-0 w-full h-full object-contain opacity-85"
         />
       </picture>
 

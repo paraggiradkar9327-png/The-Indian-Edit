@@ -361,7 +361,7 @@ export const Level3DecodeTheBottle: React.FC = () => {
 
             {/* Level Completion Card */}
             {isCompleted && (
-              <div className="mt-6 p-4 rounded-xl bg-linear-to-r from-[#2e1e15] to-[#3d261a] border border-[#d4af37] text-center space-y-3 animate-fade-in">
+              <div className="mt-6 p-4 rounded-xl bg-linear-to-r from-[#160602] to-[#3d261a] border border-[#d4af37] text-center space-y-3 animate-fade-in">
                 <div className="flex items-center justify-center gap-1.5 text-[#fff1b8] text-sm font-bold">
                   <CheckCircle2 className="w-4 h-4 text-[#d4af37]" />
                   <span>Level 03 Completed!</span>

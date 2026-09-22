@@ -137,7 +137,7 @@ export const Level2ZeroMileMap: React.FC = () => {
             )}
           </div>
 
-          <div className="relative w-full aspect-760/870 max-h-155 mx-auto bg-[#1a110a] rounded-xl border border-[#3d261a] overflow-hidden flex items-center justify-center">
+          <div className="relative w-full aspect-760/870 max-h-155 mx-auto bg-[#160602] rounded-xl border border-[#3d261a] overflow-hidden flex items-center justify-center">
             <svg
               ref={svgRef}
               viewBox={INDIA_MAP_DATA.viewBox}
@@ -249,7 +249,7 @@ export const Level2ZeroMileMap: React.FC = () => {
                   className={`w-full py-3 px-4 rounded-full text-xs font-bold flex items-center justify-center gap-2 ${
                     userPin
                       ? "btn-gold cursor-pointer"
-                      : "bg-[#2e1e15] text-[#6d5746] border border-[#3d261a] cursor-not-allowed"
+                      : "bg-[#160602] text-[#6d5746] border border-[#3d261a] cursor-not-allowed"
                   }`}
                 >
                   <Target className="w-4 h-4" />
