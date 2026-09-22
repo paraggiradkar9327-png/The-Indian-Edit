@@ -18,7 +18,7 @@ export const SocialPostScreen: React.FC = () => {
         state.blendScore +
         state.scoreCity;
 
-  const captionText = `I'm ${personalityName}  India, but make it your own. Your style. Your story. Your Indian Edit.\n\n#theindianedit #theindianwhisky #abdl_india #indianWhsky`;
+  const captionText = `I'm ${personalityName}  India, but make it your own. Your style. Your story. Your Indian Edit.\n\n#theindianedit #theindianwhisky #abdl_india #indianWhisky`;
 
   const handleCopyCaption = () => {
     navigator.clipboard.writeText(captionText);
