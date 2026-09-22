@@ -1,7 +1,7 @@
 import React from "react";
-import { Sparkles, Trophy, ArrowRight, Compass } from "lucide-react";
 import { ParticleEffect } from "./ParticleEffect";
 import { sound } from "../../utils/audio";
+import NewBottle from "../../assets/images/NewBottle.png";
 
 interface WelcomeScreenProps {
   onStart: () => void;
@@ -45,7 +45,7 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
 
           <img
             id="hunt-hero-bottle"
-            src="src\assets\images\NewBottle.png"
+            src={NewBottle}
             alt="The Indian Edit Super Premium Whisky Bottle"
             className="h-56 sm:h-64 md:h-72 w-auto object-contain rounded-xl transition-transform duration-500 group-hover:scale-[1.02] filter drop-shadow-[0_15px_30px_rgba(0,0,0,0.9)]"
             referrerPolicy="no-referrer"

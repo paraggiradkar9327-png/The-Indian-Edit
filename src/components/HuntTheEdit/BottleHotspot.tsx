@@ -1,6 +1,7 @@
 import React from "react";
 import { HiddenBottle, DEBUG_MODE } from "../../data/huntData";
 import { Sparkles, Check } from "lucide-react";
+import NewBottle from "../../assets/images/NewBottle.png";
 
 interface BottleHotspotProps {
   bottle: HiddenBottle;
@@ -48,7 +49,7 @@ export const BottleHotspot: React.FC<BottleHotspotProps> = ({
         }}
       >
         <img
-          src="src\assets\images\NewBottle.png"
+          src={NewBottle}
           alt="The Indian Edit Bottle"
           className={`w-full h-full object-contain transition-all duration-500 filter ${
             isFound

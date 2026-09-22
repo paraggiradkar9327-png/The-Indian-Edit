@@ -1,15 +1,8 @@
 import React, { useEffect } from "react";
-import {
-  Trophy,
-  Share2,
-  RotateCcw,
-  Award,
-  Sparkles,
-  ArrowRight,
-  CheckCircle2,
-} from "lucide-react";
+import { RotateCcw, CheckCircle2 } from "lucide-react";
 import { ParticleEffect } from "./ParticleEffect";
 import { sound } from "../../utils/audio";
+import NewBottle from "../../assets/images/NewBottle.png";
 
 interface FinalResultProps {
   bottlesFound: number;
@@ -51,7 +44,7 @@ export const FinalResult: React.FC<FinalResultProps> = ({
       {/* Bottle Reveal Visual with Golden Ambient Halo */}
       <div className="relative z-10 my-4 sm:my-6 group flex justify-center">
         <img
-          src="src\assets\images\NewBottle.png"
+          src={NewBottle}
           alt="The Indian Edit Trophy Bottle"
           className="h-58 sm:h-64 md:h-90 w-auto object-contain rounded-xl filter drop-shadow-[0_15px_30px_rgba(0,0,0,0.9)]"
           referrerPolicy="no-referrer"
