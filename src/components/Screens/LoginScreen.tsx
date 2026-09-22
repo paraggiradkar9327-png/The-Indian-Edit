@@ -54,7 +54,7 @@ export const LoginScreen: React.FC = () => {
     }
 
     if (!isAgeConfirmed) {
-      setError("You must confirm you are of legal drinking age (21+).");
+      setError("You must confirm you are of legal drinking age (25).");
       sound.playWrong();
       return;
     }
