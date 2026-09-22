@@ -1,15 +1,8 @@
 import React, { useState } from "react";
 import { useGame } from "../context/GameContext";
 import { ScreenId } from "../types";
-import {
-  Volume2,
-  VolumeX,
-  Sparkles,
-  RotateCcw,
-  ChevronDown,
-  Trophy,
-  KeyRound,
-} from "lucide-react";
+import { Sparkles, RotateCcw, ChevronDown, KeyRound } from "lucide-react";
+import logo from "../assets/images/editLogo.svg";
 
 interface HeaderProps {
   onShowIntroSplash?: () => void;
@@ -80,11 +73,7 @@ export const Header: React.FC<HeaderProps> = ({ onShowIntroSplash }) => {
           title="Return to Experience Home"
         >
           <div className="mt-5 ml-10">
-            <img
-              src="src\assets\images\editLogo.svg"
-              alt=""
-              className="h-36 w-36"
-            />
+            <img src={logo} alt="" className="h-36 w-36" />
           </div>
         </button>
 

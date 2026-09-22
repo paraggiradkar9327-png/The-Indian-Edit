@@ -1,6 +1,7 @@
 import React from "react";
 import { ArrowRight, X } from "lucide-react";
 import { sound } from "../utils/audio";
+import fullSizeImg from "../assets/images/fullSize.png";
 
 interface IntroHeroSplashProps {
   onEnter: () => void;
@@ -21,12 +22,9 @@ export const IntroHeroSplash: React.FC<IntroHeroSplashProps> = ({
     >
       {/* Full-screen image, never cropped */}
       <picture>
-        <source
-          media="(orientation: portrait)"
-          srcSet="src/assets/images/fullSize.png"
-        />
+        <source media="(orientation: portrait)" srcSet={fullSizeImg} />
         <img
-          src="src/assets/images/fullSize.png"
+          src={fullSizeImg}
           alt="The Indian Edit Super Premium Whisky"
           className="absolute inset-0 w-full h-full object-contain opacity-85"
         />
